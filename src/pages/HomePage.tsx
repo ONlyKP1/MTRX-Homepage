@@ -315,6 +315,9 @@ function PricingSection() {
                     <span className="price-value">7%</span>
                     <span className="price-desc">per transaction</span>
                   </div>
+                  <div className="pricing-line onboarding-fee">
+                    <span className="price-desc">One time Onboarding fee of £99</span>
+                  </div>
                 </div>
               </div>
               <p className="pricing-main-description">

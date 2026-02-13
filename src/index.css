@@ -4381,6 +4381,17 @@ body.privacy-mode .privacy-toggle.active {
   color: var(--color-muted);
 }
 
+.onboarding-fee {
+  justify-content: center;
+  margin-top: var(--space-sm);
+}
+
+.onboarding-fee .price-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-navy);
+  font-weight: var(--font-weight-medium);
+}
+
 .pricing-main-price,
 .affiliate-rate {
   display: flex;
@@ -4669,6 +4680,7 @@ body.privacy-mode .privacy-toggle.active {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
+  align-items: stretch;
 }
 
 .feature-card {
@@ -4678,6 +4690,9 @@ body.privacy-mode .privacy-toggle.active {
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   border: 1px solid rgba(111, 174, 154, 0.1);
   perspective: 1000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card:hover {
@@ -4687,8 +4702,11 @@ body.privacy-mode .privacy-toggle.active {
 
 .feature-image {
   width: 100%;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
+  object-position: center center;
   display: block;
+  flex-shrink: 0;
   transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
