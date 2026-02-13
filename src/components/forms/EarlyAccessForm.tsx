@@ -11,12 +11,6 @@ interface FormData {
   volume: string;
 }
 
-const ACCOUNT_TYPE_OPTIONS = [
-  'Select account type',
-  'Business',
-  'Individual',
-];
-
 const INDUSTRY_OPTIONS = [
   'Select your industry',
   'E-commerce & Retail',
