@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { AnimatedSection } from '../components/AnimatedSection';
-import { Button, SectionHeader, IconBox } from '../components/common';
+import { Button, SectionHeader } from '../components/common';
 import { EarlyAccessForm } from '../components/forms';
 
 /* ------------------------------------------------------------------ */
@@ -33,9 +33,6 @@ function HeroSection() {
               <Button variant="gold" onClick={scrollToFounders}>
                 Request Access
               </Button>
-              <Button variant="outline" onClick={() => document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' })}>
-                View Platform
-              </Button>
             </div>
           </div>
 
@@ -61,7 +58,7 @@ function HeroSection() {
                 <span className="notification-amount">+$4,250.00</span>
               </div>
 
-              <img src="/hero-image.jpg" alt="MTRXPAY Dashboard" />
+              <img src="/dashboard.png" alt="MTRX PAY Dashboard" />
 
               {/* Stats bar */}
               <div className="hero-stats">
@@ -136,10 +133,48 @@ function VideoSection() {
               controls
               poster=""
             >
-              <source src="/INTRO VIDEO.mp4" type="video/mp4" />
+              <source src="/INTRO VIDEO 2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Section 2b — Features                                               */
+/* ------------------------------------------------------------------ */
+const FEATURES = [
+  { image: '/Fetaure 1.png', alt: 'Built for Businesses Others Decline' },
+  { image: '/Feature 2 .png', alt: 'Safeguarded Payments by Design' },
+  { image: '/Feature 3.png', alt: 'Global Customers, Local Expertise' },
+  { image: '/Feature 4.png', alt: 'Earn While You Grow' },
+  { image: '/Feature 5.png', alt: 'Total Visibility' },
+  { image: '/Feature 6.png', alt: 'Faster, Fairer Onboarding' },
+  { image: '/Feature 7.png', alt: 'Built by Founders Who\'ve Been There' },
+  { image: '/Feature 8.png', alt: 'Real Humans. Real Support.' },
+  { image: '/Feature 9.png', alt: 'Discreet & Brand Aware' },
+];
+
+function FeaturesSection() {
+  return (
+    <section id="features" className="section section-gray">
+      <div className="container">
+        <SectionHeader
+          heading="Why Choose MTRX PAY"
+          body="Everything you need to accept payments with confidence."
+        />
+
+        <div className="features-grid">
+          {FEATURES.map((feature, index) => (
+            <AnimatedSection key={feature.alt} delay={index * 0.05}>
+              <div className="feature-card">
+                <img src={feature.image} alt={feature.alt} className="feature-image" />
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
       </div>
     </section>
@@ -153,27 +188,27 @@ const INDUSTRIES = [
   {
     name: 'Creator & Digital Platforms',
     description: 'Payments and safeguarding infrastructure for subscription, fan, and content-led ecosystems.',
-    icon: '🎬',
+    image: '/Industry 1.jpg',
   },
   {
     name: 'Lifestyle',
     description: 'Compliant acquiring for contemporary brands in high-engagement consumer markets.',
-    icon: '✨',
+    image: '/Industry 2.jpg',
   },
   {
     name: 'Wellness & Speciality Products',
     description: 'Secure processing for regulated health, nutraceutical, and botanical businesses.',
-    icon: '🌿',
+    image: '/Industry 3.jpg',
   },
   {
     name: 'Digital Training & Courses',
     description: 'Reliable monetisation for educators, academies, and expert-driven learning platforms.',
-    icon: '📚',
+    image: '/Industry 4.jpg',
   },
   {
     name: 'Independent Providers',
     description: 'Secure, discreet payments for verified individuals and agency-supported bookings.',
-    icon: '🔐',
+    image: '/Industry 5.jpg',
   },
 ];
 
@@ -231,9 +266,7 @@ function IndustriesCarousel() {
                     zIndex: INDUSTRIES.length - absOffset,
                   }}
                 >
-                  <div className="carousel-card-icon">{industry.icon}</div>
-                  <h3>{industry.name}</h3>
-                  <p>{industry.description}</p>
+                  <img src={industry.image} alt={industry.name} className="carousel-card-image" />
                 </div>
               );
             })}
@@ -340,7 +373,7 @@ function AffiliateSection() {
       <div className="container">
         <AnimatedSection delay={0}>
           <div className="affiliate-image-container">
-            <img src="/Affiation image 2.png" alt="Affiliate Programme - Earn 1% commission on referrals" className="affiliate-image" />
+            <img src="/Join the family 3.jpg" alt="Join the MTRX PAY Family - Become a Partner" className="affiliate-image" />
             <Button variant="gold" className="affiliate-btn" onClick={scrollToFounders}>
               Become a Partner
             </Button>
@@ -352,251 +385,17 @@ function AffiliateSection() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Section 5 — How Are We Different                                   */
+/*  Section 5 — Subscription Support                                   */
 /* ------------------------------------------------------------------ */
-const DIFFERENTIATORS = [
-  {
-    title: 'We Say Yes',
-    description: 'Where others reject first and ask questions never, we approve businesses that deserve to trade.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Non-Custodial',
-    description: 'Your money stays yours. Our infrastructure prioritises merchant control and security.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Built for Scale',
-    description: 'From startup to enterprise, our multi-rail infrastructure grows with your business.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Compliance First',
-    description: 'Integrated KYC/AML verification through partner networks ensures you\'re always compliant.',
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M9 3v18" />
-        <path d="M3 9h18" />
-      </svg>
-    ),
-  },
-];
-
-function DifferentSection() {
+function SubscriptionSection() {
   return (
-    <section id="different" className="section section-white">
+    <section id="subscriptions" className="section section-white">
       <div className="container">
-        <SectionHeader
-          heading="How Are We Different?"
-          body="We're not just another payment processor. We're your partner in growth."
-        />
-
-        <div className="different-grid">
-          {DIFFERENTIATORS.map((item, index) => (
-            <AnimatedSection key={item.title} delay={index * 0.1}>
-              <div className="different-card">
-                <IconBox>{item.icon}</IconBox>
-                <h4>{item.title}</h4>
-                <p>{item.description}</p>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section 6 — Architecture Animation                                 */
-/* ------------------------------------------------------------------ */
-function ArchitectureSection() {
-  const [animationStep, setAnimationStep] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimationStep((prev) => (prev + 1) % 4);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <section id="architecture" className="section section-navy">
-      <div className="container">
-        <SectionHeader
-          dark
-          heading="Multi-Rail Payment Architecture"
-          body="One API. Multiple payment rails. Seamless processing."
-        />
-
-        <div className="architecture-visual">
-          <div className="architecture-flow">
-            {/* Merchant */}
-            <div className={`arch-node arch-merchant ${animationStep >= 0 ? 'active' : ''}`}>
-              <div className="arch-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-              </div>
-              <span>Your Business</span>
-            </div>
-
-            {/* Connection line */}
-            <div className={`arch-line ${animationStep >= 1 ? 'active' : ''}`}>
-              <div className="arch-pulse" />
-            </div>
-
-            {/* MTRXPAY Hub */}
-            <div className={`arch-node arch-hub ${animationStep >= 1 ? 'active' : ''}`}>
-              <div className="arch-icon arch-icon--gold">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M2 12h20" />
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
-              </div>
-              <span>MTRXPAY</span>
-            </div>
-
-            {/* Connection lines to rails */}
-            <div className={`arch-line arch-line--multi ${animationStep >= 2 ? 'active' : ''}`}>
-              <div className="arch-pulse" />
-            </div>
-
-            {/* Payment Rails */}
-            <div className="arch-rails">
-              <div className={`arch-node arch-rail ${animationStep >= 2 ? 'active' : ''}`} style={{ animationDelay: '0s' }}>
-                <div className="arch-icon arch-icon--small">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="1" y="4" width="22" height="16" rx="2" />
-                    <line x1="1" y1="10" x2="23" y2="10" />
-                  </svg>
-                </div>
-                <span>Cards</span>
-              </div>
-              <div className={`arch-node arch-rail ${animationStep >= 2 ? 'active' : ''}`} style={{ animationDelay: '0.2s' }}>
-                <div className="arch-icon arch-icon--small">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 21h18" />
-                    <path d="M3 10h18" />
-                    <path d="M5 6l7-3 7 3" />
-                    <path d="M4 10v11" />
-                    <path d="M20 10v11" />
-                    <path d="M8 14v3" />
-                    <path d="M12 14v3" />
-                    <path d="M16 14v3" />
-                  </svg>
-                </div>
-                <span>Banks</span>
-              </div>
-              <div className={`arch-node arch-rail ${animationStep >= 2 ? 'active' : ''}`} style={{ animationDelay: '0.4s' }}>
-                <div className="arch-icon arch-icon--small">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 6v6l4 2" />
-                  </svg>
-                </div>
-                <span>Crypto</span>
-              </div>
-            </div>
+        <AnimatedSection delay={0}>
+          <div className="subscription-image-container">
+            <img src="/Subscription image.jpg" alt="Subscription Support - Built for recurring billing" className="subscription-image" />
           </div>
-
-          <div className="architecture-stats">
-            <AnimatedSection delay={0}>
-              <div className="arch-stat">
-                <span className="arch-stat-value">99.99%</span>
-                <span className="arch-stat-label">Uptime</span>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <div className="arch-stat">
-                <span className="arch-stat-value">&lt;100ms</span>
-                <span className="arch-stat-label">Latency</span>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2}>
-              <div className="arch-stat">
-                <span className="arch-stat-value">3+</span>
-                <span className="arch-stat-label">Payment Rails</span>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section 7 — Compliance Centre                                      */
-/* ------------------------------------------------------------------ */
-function ComplianceSection() {
-  return (
-    <section id="compliance" className="section section-white">
-      <div className="container">
-        <SectionHeader
-          heading="Compliance Centre"
-          body="We take compliance seriously. Our platform is built with security and regulatory requirements at its core."
-        />
-
-        <div className="compliance-grid">
-          <AnimatedSection delay={0}>
-            <div className="compliance-card">
-              <div className="compliance-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <h3>PCI DSS Compliant</h3>
-              <p>Level 1 PCI DSS compliance ensures your payment data is protected to the highest standards.</p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <div className="compliance-card">
-              <div className="compliance-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-              </div>
-              <h3>KYC/AML Verification</h3>
-              <p>Integrated identity verification and anti-money laundering checks through our partner network.</p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <div className="compliance-card">
-              <div className="compliance-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
-              </div>
-              <h3>GDPR Compliant</h3>
-              <p>Full compliance with European data protection regulations to safeguard customer information.</p>
-            </div>
-          </AnimatedSection>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
@@ -611,7 +410,7 @@ function SocialSection() {
       <div className="container" style={{ textAlign: 'center' }}>
         <SectionHeader
           heading="Connect With Us"
-          body="Stay updated with the latest news and updates from MTRXPAY."
+          body="Stay updated with the latest news and updates from MTRX PAY."
         />
 
         <div className="social-links">
@@ -644,22 +443,27 @@ function FoundersClubSection() {
     <section id="founders-club" className="section section-blue">
       <div className="container" style={{ textAlign: 'center' }}>
         <AnimatedSection>
+          <p className="founders-limited">Limited Places Available</p>
           <h2 style={{ color: '#fff' }}>
-            Join the Founders Club
+            Become a Founding Partner
           </h2>
         </AnimatedSection>
 
         <AnimatedSection delay={0.15}>
+          <div className="founders-offer">
+            <span className="offer-text">No subscription fees for founding members for the first 90 days*</span>
+            <span className="offer-disclaimer">*onboarding cost remains</span>
+          </div>
           <p
             style={{
-              color: '#fff',
-              maxWidth: '700px',
-              margin: '0 auto 2rem',
-              lineHeight: 1.7,
+              color: 'rgba(255, 255, 255, 0.85)',
+              maxWidth: '550px',
+              margin: '0 auto 2.5rem',
+              lineHeight: 1.8,
+              fontSize: '1.05rem',
             }}
           >
-            Founding partners secure preferential rates, priority onboarding,
-            dedicated support, and the certainty of approval — before we open to everyone.
+            Limited numbers only. Priority onboarding and dedicated support.
           </p>
         </AnimatedSection>
 
@@ -679,14 +483,13 @@ export function HomePage() {
     <>
       <HeroSection />
       <VideoSection />
+      <FeaturesSection />
       <IndustriesCarousel />
       <PricingSection />
       <AffiliateSection />
-      <DifferentSection />
-      <ArchitectureSection />
-      <ComplianceSection />
-      <SocialSection />
+      <SubscriptionSection />
       <FoundersClubSection />
+      <SocialSection />
     </>
   );
 }

@@ -5,56 +5,23 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-grid">
+        <div className="footer-main">
           <AnimatedSection delay={0}>
-            <div className="footer-brand">
+            <div className="footer-brand-center">
               <Link to="/" className="nav-logo">
-                <img src="/logo.png" alt="MTRXPAY" className="nav-logo-img" />
+                <img src="/logo.png" alt="MTRX PAY" className="footer-logo-img" />
               </Link>
-              <p>The Universal Payment Processing Partner</p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <div className="footer-column">
-              <h4>Company</h4>
-              <div className="footer-links">
-                <Link to="/about">About Us</Link>
-                <a href="#">Careers</a>
-                <a href="#">Contact</a>
-                <a href="#">Press</a>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <div className="footer-column">
-              <h4>Resources</h4>
-              <div className="footer-links">
-                <a href="#">Documentation</a>
-                <a href="#">API Reference</a>
-                <a href="#">Blog</a>
-                <a href="#">Support</a>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.3}>
-            <div className="footer-column">
-              <h4>Legal</h4>
-              <div className="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">Compliance</a>
-              </div>
+              <p className="footer-tagline">MTRX PAY powered by MIDAS TRANSACTION EXCHANGE</p>
             </div>
           </AnimatedSection>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2026 MTRXPAY. A MIDAS Company.</p>
-          <p>Registered in England & Wales | Company No. 12345678</p>
+          <div className="footer-registrations">
+            <p>MTRX PAY LIMITED | Registered in England & Wales | Company No. 16913646</p>
+            <p>MIDAS TRANSACTION EXCHANGE - FZCO | License Number: 75905</p>
+          </div>
+          <p className="footer-copyright">&copy; 2026 MTRX PAY. All rights reserved.</p>
         </div>
       </div>
     </footer>

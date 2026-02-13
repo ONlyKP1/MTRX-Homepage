@@ -1,12 +1,21 @@
 import type { FormEvent } from 'react';
 import { useState } from 'react';
 
+const WEB3FORMS_KEY = '236d967c-3ac9-495a-a50e-0e0f16d0f256';
+
 interface FormData {
+  accountType: string;
   businessName: string;
   email: string;
   industry: string;
   volume: string;
 }
+
+const ACCOUNT_TYPE_OPTIONS = [
+  'Select account type',
+  'Business',
+  'Individual',
+];
 
 const INDUSTRY_OPTIONS = [
   'Select your industry',
@@ -34,13 +43,15 @@ const VOLUME_OPTIONS = [
 
 export function EarlyAccessForm() {
   const [formData, setFormData] = useState<FormData>({
+    accountType: '',
     businessName: '',
     email: '',
-    industry: '',
-    volume: '',
+    industry: 'Select your industry',
+    volume: 'Select volume',
   });
   const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -48,11 +59,16 @@ export function EarlyAccessForm() {
     if (error) setError('');
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (!formData.accountType || formData.accountType === 'Select account type') {
+      setError('Please select Business or Individual.');
+      return;
+    }
+
     if (!formData.businessName.trim()) {
-      setError('Please enter your business name.');
+      setError('Please enter your business or individual name.');
       return;
     }
 
@@ -71,7 +87,39 @@ export function EarlyAccessForm() {
       return;
     }
 
-    setSubmitted(true);
+    setSubmitting(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Early Access Request - ${formData.businessName}`,
+          from_name: 'MTRX PAY Website',
+          account_type: formData.accountType,
+          business_name: formData.businessName,
+          email: formData.email,
+          industry: formData.industry,
+          monthly_volume: formData.volume,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Failed to submit. Please check your connection and try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -99,15 +147,37 @@ export function EarlyAccessForm() {
   return (
     <form className="early-access-form" onSubmit={handleSubmit} noValidate>
       <div className="form-group">
-        <label htmlFor="businessName">Business Name</label>
+        <label className="toggle-label">
+          Account Type {!formData.accountType && <span className="required-hint">- Please select one</span>}
+        </label>
+        <div className="account-type-toggle">
+          <button
+            type="button"
+            className={`toggle-btn ${formData.accountType === 'Business' ? 'active' : ''}`}
+            onClick={() => setFormData(prev => ({ ...prev, accountType: 'Business' }))}
+          >
+            Business
+          </button>
+          <button
+            type="button"
+            className={`toggle-btn ${formData.accountType === 'Individual' ? 'active' : ''}`}
+            onClick={() => setFormData(prev => ({ ...prev, accountType: 'Individual' }))}
+          >
+            Individual
+          </button>
+        </div>
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="businessName">{formData.accountType === 'Individual' ? 'Your Name' : 'Business Name'}</label>
         <input
           type="text"
           id="businessName"
           name="businessName"
           value={formData.businessName}
           onChange={handleChange}
-          placeholder="Your business name"
-          autoComplete="organization"
+          placeholder={formData.accountType === 'Individual' ? 'Your full name' : 'Your business name'}
+          autoComplete={formData.accountType === 'Individual' ? 'name' : 'organization'}
         />
       </div>
 
@@ -158,8 +228,8 @@ export function EarlyAccessForm() {
 
       {error && <p className="form-error">{error}</p>}
 
-      <button type="submit" className="btn btn-gold btn-animated" style={{ width: '100%' }}>
-        Request Early Access
+      <button type="submit" className="btn btn-gold btn-animated" style={{ width: '100%' }} disabled={submitting}>
+        {submitting ? 'Submitting...' : 'Request Early Access'}
       </button>
     </form>
   );

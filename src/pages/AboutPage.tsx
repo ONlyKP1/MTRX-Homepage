@@ -1,43 +1,32 @@
-import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { SectionHeader } from '../components/common';
+import { EarlyAccessForm } from '../components/forms';
 
 export function AboutPage() {
   return (
     <>
-      {/* Section 1: Hero */}
-      <section className="section section-navy hero hero-short">
+      {/* Section 1: Video */}
+      <section className="section section-white about-video-section">
         <div className="container">
-          <div className="hero-content" style={{ textAlign: 'center' }}>
-            <span className="hero-tag">About MTRXPAY</span>
-            <h1 className="hero-title animate-hero">
-              Payment Processing Without the Arbitrary Rejections
-            </h1>
-            <p className="hero-subtitle animate-hero-delayed">
-              MTRXPAY is a next-generation payment platform designed to serve businesses that
-              traditional processors leave behind.
-            </p>
-            <p className="hero-body animate-hero-delayed-2">
-              Founded on the principle that every legitimate business deserves access to reliable
-              payment infrastructure — we're building a platform that combines first-class
-              technology with world-class customer service.
-            </p>
-            <div className="hero-cta animate-hero-delayed-3">
-              <Link to="/product" className="btn btn-primary btn-animated">
-                Our Product
-              </Link>
-            </div>
+          <div className="about-video-container">
+            <video
+              className="about-video"
+              controls
+              poster=""
+            >
+              <source src="/About Us 2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Mission */}
+      {/* Section 2: Our Mission */}
       <section className="section section-white">
         <div className="container">
-          <SectionHeader heading="What Drives Us" center={false} />
-          <div className="split-section">
-            <AnimatedSection animation="fade-right">
-              <h3>Our Mission</h3>
+          <AnimatedSection>
+            <div className="mission-content">
+              <h2>Our Mission</h2>
               <p>
                 Every legitimate business deserves payment infrastructure that works for them, not
                 against them.
@@ -48,12 +37,20 @@ export function AboutPage() {
                 complexity than manage it properly.
               </p>
               <p>
-                MTRXPAY exists to solve this. We're building payment infrastructure that combines
+                MTRX PAY exists to solve this. We're building payment infrastructure that combines
                 institutional-grade compliance with genuine merchant advocacy.
               </p>
-            </AnimatedSection>
-            <AnimatedSection animation="fade-left" delay={0.2}>
-              <h3>What Success Looks Like</h3>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Section 3: What Success Looks Like */}
+      <section className="section section-gray">
+        <div className="container">
+          <SectionHeader heading="What Success Looks Like" />
+          <div className="success-split">
+            <AnimatedSection animation="fade-right">
               <ul className="success-list">
                 <li>
                   A merchant launches their business and gets approved in days, not rejected in
@@ -72,6 +69,8 @@ export function AboutPage() {
                   Payment processing relationships are measured in years, not months
                 </li>
               </ul>
+            </AnimatedSection>
+            <AnimatedSection animation="fade-left" delay={0.2}>
               <div className="highlight-box">
                 <h4>Customer Service Isn't a Department — It's Our DNA</h4>
                 <p>
@@ -85,8 +84,8 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Section 3: Core Values */}
-      <section className="section section-gray">
+      {/* Section 4: Core Values */}
+      <section className="section section-white">
         <div className="container">
           <SectionHeader heading="What We Stand For" />
           <div className="values-grid">
@@ -130,7 +129,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Section 4: Our Approach */}
+      {/* Section 5: Our Approach */}
       <section className="section section-navy">
         <div className="container">
           <SectionHeader dark={true} heading="How We Work" />
@@ -203,7 +202,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Section 5: Team */}
+      {/* Section 6: Team */}
       <section className="section section-white">
         <div className="container">
           <SectionHeader heading="Built by a Team Committed to Universal Payment Access" />
@@ -237,23 +236,36 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Section 6: CTA */}
-      <section className="section section-blue">
+      {/* Section 7: Founders Club */}
+      <section id="founders-club" className="section section-blue">
         <div className="container" style={{ textAlign: 'center' }}>
           <AnimatedSection>
-            <h2 style={{ color: '#ffffff' }}>Join Us in Reimagining Payments</h2>
+            <p className="founders-limited">Limited Places Available</p>
+            <h2 style={{ color: '#fff' }}>
+              Become a Founding Partner
+            </h2>
           </AnimatedSection>
+
           <AnimatedSection delay={0.15}>
-            <p style={{ color: '#ffffff' }}>
-              Whether you're a merchant looking for a reliable processing partner, a technology
-              company interested in integration, or a professional who shares our vision — we want
-              to hear from you.
+            <div className="founders-offer">
+              <span className="offer-text">No subscription fees for founding members for the first 90 days*</span>
+              <span className="offer-disclaimer">*onboarding cost remains</span>
+            </div>
+            <p
+              style={{
+                color: 'rgba(255, 255, 255, 0.85)',
+                maxWidth: '550px',
+                margin: '0 auto 2.5rem',
+                lineHeight: 1.8,
+                fontSize: '1.05rem',
+              }}
+            >
+              Limited numbers only. Priority onboarding and dedicated support.
             </p>
           </AnimatedSection>
+
           <AnimatedSection delay={0.3}>
-            <Link to="/#early-access" className="btn btn-gold btn-animated">
-              Register Your Interest
-            </Link>
+            <EarlyAccessForm />
           </AnimatedSection>
         </div>
       </section>
