@@ -103,16 +103,6 @@ function HeroSection() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/*  Globe Banner                                                        */
-/* ------------------------------------------------------------------ */
-function GlobeBanner() {
-  return (
-    <div className="globe-banner">
-      <img src="/Banners.jpg" alt="Global Network" className="world-map-img" />
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Section 2 — Video                                                  */
@@ -190,7 +180,7 @@ const INDUSTRIES = [
 function IndustriesCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (isAutoPlaying) {
