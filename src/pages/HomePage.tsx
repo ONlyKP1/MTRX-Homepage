@@ -25,8 +25,8 @@ function HeroSection() {
             </h1>
 
             <p className="hero-subtitle animate-hero">
-              Route transactions intelligently across providers, currencies, and payment types —
-              built for businesses traditional processors can't serve.
+              Route transactions intelligently across providers, currencies, and payment types.
+              Built for businesses traditional processors can't serve.
             </p>
 
             <div className="hero-cta animate-hero">
@@ -131,7 +131,9 @@ function VideoSection() {
             <video
               className="intro-video"
               controls
-              poster=""
+              preload="metadata"
+              playsInline
+              poster="/Thumbnail 1.png"
             >
               <source src="/INTRO VIDEO 2.mp4" type="video/mp4" />
               Your browser does not support the video tag.

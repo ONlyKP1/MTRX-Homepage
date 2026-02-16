@@ -3723,12 +3723,18 @@ body.privacy-mode .privacy-toggle.active {
   /* Team */
   .team-grid {
     grid-template-columns: 1fr;
-    max-width: 400px;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  .team-grid > * {
+    width: 100%;
+    max-width: 100%;
   }
 
   .team-grid > *:last-child:nth-child(odd) {
-    max-width: none;
+    max-width: 100%;
   }
 
   /* Pricing — stacked cards */
@@ -3928,11 +3934,11 @@ body.privacy-mode .privacy-toggle.active {
 
 /* Reduce space after hero */
 .hero + .section {
-  padding-top: var(--space-lg);
+  padding-top: var(--space-sm);
 }
 
 .hero {
-  padding-bottom: var(--space-2xl);
+  padding-bottom: var(--space-md);
 }
 
 .world-map-img {
@@ -5158,6 +5164,15 @@ body.privacy-mode .nav-mobile a {
 body.privacy-mode .nav-links a:hover,
 body.privacy-mode .nav-mobile a:hover {
   color: var(--color-gold);
+}
+
+body.privacy-mode .burger-line {
+  background-color: #E2E8F0;
+}
+
+body.privacy-mode .nav-mobile {
+  background-color: #0F172A;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body.privacy-mode .privacy-toggle {

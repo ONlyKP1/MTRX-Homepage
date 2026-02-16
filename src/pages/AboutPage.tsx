@@ -12,7 +12,9 @@ export function AboutPage() {
             <video
               className="about-video"
               controls
-              poster=""
+              preload="metadata"
+              playsInline
+              poster="/Thumbnail 2.png"
             >
               <source src="/About Us 2.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -72,7 +74,7 @@ export function AboutPage() {
             </AnimatedSection>
             <AnimatedSection animation="fade-left" delay={0.2}>
               <div className="highlight-box">
-                <h4>Customer Service Isn't a Department — It's Our DNA</h4>
+                <h4>Customer Service Isn't a Department. It's Our DNA</h4>
                 <p>
                   Payment processing shouldn't feel like dealing with an automated rejection
                   machine. We believe in human-first support, transparent communication, and
@@ -91,7 +93,7 @@ export function AboutPage() {
           <div className="values-grid">
             <AnimatedSection delay={0}>
               <div className="value-card">
-                <h3>Customer-First</h3>
+                <h3>Customer First</h3>
                 <p>
                   Every decision starts with one question: does this serve our merchants better? We
                   measure our success by the success of the businesses we serve.
@@ -150,7 +152,7 @@ export function AboutPage() {
                 </svg>
                 <h3>Regulatory Compliance</h3>
                 <p>
-                  We don't just meet regulatory requirements — we exceed them. Our compliance
+                  We don't just meet regulatory requirements. We exceed them. Our compliance
                   framework is designed to give regulators confidence and give merchants peace of
                   mind.
                 </p>

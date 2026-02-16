@@ -35,7 +35,7 @@ export function ProductPage() {
         <div className="container">
           <SectionHeader
             heading="One Platform, Complete Payment Infrastructure"
-            body="Everything you need to accept, process, and manage payments — built on modern technology with institutional-grade security."
+            body="Everything you need to accept, process, and manage payments. Built on modern technology with institutional-grade security."
           />
           <div className="feature-grid">
             <AnimatedSection delay={0}>
