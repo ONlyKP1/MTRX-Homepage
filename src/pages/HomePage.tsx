@@ -1,500 +1,398 @@
 import { useState, useEffect, useRef } from 'react';
-import { AnimatedSection } from '../components/AnimatedSection';
-import { Button, SectionHeader } from '../components/common';
-import { EarlyAccessForm } from '../components/forms';
+import { AnimatedSection, AnimatedCounter } from '../components/AnimatedSection';
 
-/* ------------------------------------------------------------------ */
-/*  Section 1 — Hero (Who are we)                                      */
-/* ------------------------------------------------------------------ */
-function HeroSection() {
-  const scrollToFounders = () => {
-    const target = document.getElementById('founders-club');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section id="hero" className="section hero hero-split hero-light">
-      <div className="container">
-        <div className="hero-split-layout">
-          <div className="hero-content hero-content--left">
-            <h1 className="hero-title animate-hero">
-              Payment Orchestration<br />
-              for <span>Complex Money</span>
-            </h1>
-
-            <p className="hero-subtitle animate-hero">
-              Route transactions intelligently across providers, currencies, and payment types.
-              Built for businesses traditional processors can't serve.
-            </p>
-
-            <div className="hero-cta animate-hero">
-              <Button variant="gold" onClick={scrollToFounders}>
-                Request Access
-              </Button>
-            </div>
-          </div>
-
-          <div className="hero-image animate-hero">
-            <div className="hero-image-wrapper">
-              {/* Live badge */}
-              <div className="hero-live-badge">
-                <span className="live-dot"></span>
-                LIVE
-              </div>
-
-              {/* Floating notification */}
-              <div className="hero-notification">
-                <div className="notification-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6FAE9A" strokeWidth="2">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <div className="notification-content">
-                  <span className="notification-title">Payment Approved</span>
-                  <span className="notification-subtitle">MTRX Pay</span>
-                </div>
-                <span className="notification-amount">+$4,250.00</span>
-              </div>
-
-              <img src="/dashboard.png" alt="MTRX PAY Dashboard" />
-
-              {/* Stats bar */}
-              <div className="hero-stats">
-                <div className="hero-stat">
-                  <span className="stat-label">VOLUME</span>
-                  <span className="stat-value">$689,201</span>
-                </div>
-                <div className="hero-stat">
-                  <span className="stat-label">TRANSACTIONS</span>
-                  <span className="stat-value">2,847</span>
-                </div>
-                <div className="hero-stat">
-                  <span className="stat-label">SUCCESS</span>
-                  <span className="stat-value">92.4%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Subtle floating dots */}
-            <div className="hero-dots-subtle">
-              <span></span><span></span><span></span>
-            </div>
-
-            {/* Extra floating particles */}
-            <div className="hero-particles">
-              <span className="particle particle-1"></span>
-              <span className="particle particle-2"></span>
-              <span className="particle particle-3"></span>
-              <span className="particle particle-4"></span>
-              <span className="particle particle-5"></span>
-            </div>
-          </div>
-        </div>
-
-        {/* Subtle decorative line */}
-        <div className="hero-accent-line"></div>
-      </div>
-    </section>
-  );
-}
-
-
-/* ------------------------------------------------------------------ */
-/*  Section 2 — Video                                                  */
-/* ------------------------------------------------------------------ */
-function VideoSection() {
-  const scrollToFounders = () => {
-    const target = document.getElementById('founders-club');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section id="video" className="section section-white">
-      <div className="container">
-        <div className="video-split-layout">
-          <div className="video-cta-content">
-            <h2>Become a Founding Partner</h2>
-            <p>
-              Join the businesses building payment infrastructure that won't reject them.
-              Founding partners secure preferential rates, priority onboarding, and dedicated support.
-            </p>
-            <Button variant="gold" onClick={scrollToFounders}>
-              Join Founders Club
-            </Button>
-          </div>
-
-          <div className="video-container">
-            <video
-              className="intro-video"
-              controls
-              preload="metadata"
-              playsInline
-              poster="/Thumbnail 1.png"
-            >
-              <source src="/INTRO VIDEO 2.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section 2b — Features                                               */
-/* ------------------------------------------------------------------ */
-const FEATURES = [
-  { image: '/Fetaure 1.png', alt: 'Built for Businesses Others Decline' },
-  { image: '/Feature 2 .png', alt: 'Safeguarded Payments by Design' },
-  { image: '/Feature 3.png', alt: 'Global Customers, Local Expertise' },
-  { image: '/Feature 4.png', alt: 'Earn While You Grow' },
-  { image: '/Feature 5.png', alt: 'Total Visibility' },
-  { image: '/Feature 6.png', alt: 'Faster, Fairer Onboarding' },
-  { image: '/Feature 7.png', alt: 'Built by Founders Who\'ve Been There' },
-  { image: '/Feature 8.png', alt: 'Real Humans. Real Support.' },
-  { image: '/Feature 9.png', alt: 'Discreet & Brand Aware' },
+const painPoints = [
+  {
+    problem: 'Accounts terminated overnight',
+    pBody: 'Processors shut down merchants in specialist verticals without warning. Funds frozen, operations halted, no path to reinstatement.',
+    solution: 'Dedicated rails. Contractual certainty.',
+    sBody: 'MTRX operates isolated processing infrastructure per merchant. No shared risk pools. No guilt-by-association shutdowns.',
+  },
+  {
+    problem: 'Cash locked in rolling reserves',
+    pBody: 'Up to 15% of monthly volume withheld for 90+ days as standard, regardless of actual performance, history, or dispute data.',
+    solution: 'Performance based reserve logic.',
+    sBody: 'Reserves calculated dynamically against your real chargeback and settlement data, not industry wide assumptions.',
+  },
+  {
+    problem: 'Chargebacks left undefended',
+    pBody: 'Standard processors offer no dispute support. Evidence gathering, deadline tracking, and filing are left entirely to the merchant.',
+    solution: 'Managed dispute resolution, automated and human led.',
+    sBody: 'Evidence packaged from live transaction data and filed before every deadline. Where automation reaches its limits, our disputes team steps in directly, reviewing cases, engaging acquirers, and representing your position with the rigour of a dedicated compliance function.',
+  },
+  {
+    problem: 'Declined on category alone',
+    pBody: 'Applications rejected based on business type before a single data point is reviewed. No appeal process. No explanation given.',
+    solution: 'Underwriting on real merchant data.',
+    sBody: 'MTRX assesses applications on actual performance, compliance posture, and processing history. Never industry stereotypes.',
+  },
+  {
+    problem: 'Compliance that stalls onboarding',
+    pBody: 'Manual KYB/KYC processes, weeks of back and forth, and ongoing AML obligations that consume resources without adding value.',
+    solution: 'End to end automated compliance.',
+    sBody: 'KYB, KYC, AML monitoring, and PEP screening handled in a single automated flow. Onboarding in hours, not weeks.',
+  },
+  {
+    problem: "Customers who can't pay",
+    pBody: 'Narrow payment method support turns away international buyers, digital native customers, and anyone outside legacy banking rails.',
+    solution: '50+ payment methods. Every customer.',
+    sBody: 'Stablecoins, crypto, tokenised assets, open banking, card rails, and SWIFT/SEPA. All through one integration.',
+  },
 ];
 
-function FeaturesSection() {
-  return (
-    <section id="features" className="section section-gray">
-      <div className="container">
-        <SectionHeader
-          heading="Why Choose MTRX PAY"
-          body="Everything you need to accept payments with confidence."
-        />
+const txnFeed = [
+  { from: 'GBP', crypto: 'USDC', to: 'GBP', amount: '£12,400.00', risk: 94, label: 'AML Clear',     status: 'Settled',  time: '2s' },
+  { from: 'USD', crypto: 'ETH',  to: 'USD', amount: '$8,200.00',  risk: 87, label: 'KYC Verified', status: 'Approved', time: '5s' },
+  { from: 'EUR', crypto: 'USDT', to: 'EUR', amount: '€45,000.00', risk: 91, label: 'PEP None',      status: 'Settled',  time: '9s' },
+  { from: 'GBP', crypto: 'BTC',  to: 'GBP', amount: '£2,100.00',  risk: 79, label: 'KYB OK',        status: 'Approved', time: '14s' },
+  { from: 'BTC', crypto: 'BTC',  to: 'GBP', amount: '£31,750.00', risk: 88, label: 'AML Clear',     status: 'Settled',  time: '21s' },
+];
 
-        <div className="features-grid">
-          {FEATURES.map((feature, index) => (
-            <AnimatedSection key={feature.alt} delay={index * 0.05}>
-              <div className="feature-card">
-                <img src={feature.image} alt={feature.alt} className="feature-image" />
+const tickerItems = ['KYB Verified', 'KYC Compliant', 'AML Monitored', 'PEP Screened', 'Multiple Currencies', 'Stablecoin Settlement', 'Tokenised Assets', 'Real Time Risk Scoring', 'Dynamic Settlement'];
+
+export function HomePage() {
+  const [painIdx, setPainIdx] = useState(0);
+  const [carouselPaused, setCarouselPaused] = useState(false);
+  const [vertIdx, setVertIdx] = useState(0);
+  const [vertPaused, setVertPaused] = useState(false);
+  const verticalsVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (carouselPaused) return;
+    const t = setInterval(() => setPainIdx(i => (i + 1) % painPoints.length), 5500);
+    return () => clearInterval(t);
+  }, [painIdx, carouselPaused]);
+
+  useEffect(() => {
+    if (vertPaused) return;
+    const t = setInterval(() => setVertIdx(i => (i + 1) % 11), 7000);
+    return () => clearInterval(t);
+  }, [vertIdx, vertPaused]);
+
+  useEffect(() => {
+    const video = verticalsVideoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { video.play(); observer.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="mtrx-home">
+
+      {/* ══════════════════════ HERO ══════════════════════ */}
+      <section className="mtrx-hero">
+        {/* Video background */}
+        <video
+          className="mtrx-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="mtrx-hero-overlay" aria-hidden="true" />
+        <div className="mtrx-hero-grid" aria-hidden="true" />
+        <div className="mtrx-hero-radial" aria-hidden="true" />
+        <div className="container">
+          <div className="mtrx-hero-layout">
+
+            {/* Left — copy */}
+            <div className="mtrx-hero-copy">
+              <AnimatedSection animation="fade-up" delay={0}>
+                <p className="mtrx-eyebrow">MTRX PAY Launching Q2 2026</p>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-up" delay={0.08}>
+                <h1 className="mtrx-h1">
+                  Accept Payments.<br />
+                  Eliminate Chargebacks.<br />
+                  <em>Approved Where Others Declined.</em>
+                </h1>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-up" delay={0.16}>
+                <p className="mtrx-hero-sub">
+                  MTRX Pay is a compliant payment orchestration platform designed for merchants who need higher approval rates, structured onboarding, and controlled settlement.<br /><br />
+                  Built with integrated KYC, AML monitoring, and intelligent risk controls from day one.
+                </p>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-up" delay={0.24}>
+                <div className="mtrx-hero-ctas">
+                  <a href="/join" className="mtrx-btn-gold">Apply for Founding Access</a>
+                  <a href="/technology" className="mtrx-btn-outline">Explore Platform ↓</a>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            {/* Right — live transaction feed */}
+            <AnimatedSection animation="fade-left" delay={0.22} className="mtrx-hero-feed-wrap">
+              <div className="mtrx-feed-card">
+                <div className="mtrx-feed-head">
+                  <span className="mtrx-feed-live">
+                    <span className="mtrx-pulse" />
+                    Typical Transactions
+                  </span>
+                  <span className="mtrx-feed-rate">
+                    <AnimatedCounter value={1247} suffix="" duration={1600} />&thinsp;/min
+                  </span>
+                </div>
+
+                <div className="mtrx-feed-rows">
+                  {txnFeed.map((tx, i) => (
+                    <div className="mtrx-feed-row" key={i}>
+                      <div className="mtrx-feed-col-left">
+                        <span className="mtrx-feed-route">
+                          {tx.from === tx.crypto
+                            ? <><span className="mtrx-feed-crypto">{tx.crypto}</span> → {tx.to}</>
+                            : <>{tx.from} → <span className="mtrx-feed-crypto">{tx.crypto}</span> → {tx.to}</>
+                          }
+                        </span>
+                        <span className="mtrx-feed-meta">Risk {tx.risk}/100</span>
+                      </div>
+                      <div className="mtrx-feed-col-right">
+                        <span className="mtrx-feed-amount mtrx-feed-amount-gold">{tx.amount}</span>
+                        <span className="mtrx-feed-footer-row">
+                          <span className="mtrx-feed-status">{tx.status}</span>
+                          <span className="mtrx-feed-time">{tx.time} ago</span>
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mtrx-feed-foot">
+                  <span>
+                    ↑ <span className="mtrx-feed-gold">£<AnimatedCounter value={48} suffix="M" duration={1800} /></span> settled today
+                  </span>
+                  <span className="mtrx-feed-uptime">99.98% success rate</span>
+                </div>
               </div>
             </AnimatedSection>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════ METRICS ══════════════════════ */}
+      <div className="mtrx-metrics-strip">
+        <div className="container">
+          <p className="mtrx-metrics-disclaimer">
+            Target platform metrics — pre-launch
+          </p>
+          <div className="mtrx-metrics-row">
+            <AnimatedSection animation="fade-up" delay={0} className="mtrx-metric">
+              <span className="mtrx-metric-num">
+                <AnimatedCounter value={99.99} suffix="%" duration={1800} />
+              </span>
+              <span className="mtrx-metric-lbl">Uptime SLA</span>
+            </AnimatedSection>
+            <div className="mtrx-metric-divider" />
+            <AnimatedSection animation="fade-up" delay={0.08} className="mtrx-metric">
+              <span className="mtrx-metric-num">
+                <AnimatedCounter value={50} suffix="+" duration={1400} />
+              </span>
+              <span className="mtrx-metric-lbl">Supported Assets</span>
+            </AnimatedSection>
+            <div className="mtrx-metric-divider" />
+            <AnimatedSection animation="fade-up" delay={0.16} className="mtrx-metric">
+              <span className="mtrx-metric-num"><AnimatedCounter value={99.98} suffix="%" duration={1800} /></span>
+              <span className="mtrx-metric-lbl">Payment Success Rate</span>
+            </AnimatedSection>
+            <div className="mtrx-metric-divider" />
+            <AnimatedSection animation="fade-up" delay={0.24} className="mtrx-metric">
+              <span className="mtrx-metric-num">
+                <AnimatedCounter value={140} suffix="+" duration={1600} />
+              </span>
+              <span className="mtrx-metric-lbl">Countries</span>
+            </AnimatedSection>
+            <div className="mtrx-metric-divider" />
+            <AnimatedSection animation="fade-up" delay={0.32} className="mtrx-metric">
+              <span className="mtrx-metric-num">0%</span>
+              <span className="mtrx-metric-lbl">Chargeback Target</span>
+            </AnimatedSection>
+          </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════ TICKER ══════════════════════ */}
+      <div className="mtrx-ticker-wrap">
+        <div className="mtrx-ticker-scroll">
+          {[...tickerItems, ...tickerItems].map((item, i) => (
+            <span key={i} className="mtrx-ticker-chip">
+              <span className="mtrx-ticker-dot" aria-hidden="true" />
+              {item}
+            </span>
           ))}
         </div>
       </div>
-    </section>
-  );
-}
 
-/* ------------------------------------------------------------------ */
-/*  Section 3 — Industries Carousel (3D)                               */
-/* ------------------------------------------------------------------ */
-const INDUSTRIES = [
-  {
-    name: 'Creator & Digital Platforms',
-    description: 'Payments and safeguarding infrastructure for subscription, fan, and content-led ecosystems.',
-    image: '/Industry 1.jpg',
-  },
-  {
-    name: 'Lifestyle',
-    description: 'Compliant acquiring for contemporary brands in high-engagement consumer markets.',
-    image: '/Industry 2.jpg',
-  },
-  {
-    name: 'Wellness & Speciality Products',
-    description: 'Secure processing for regulated health, nutraceutical, and botanical businesses.',
-    image: '/Industry 3.jpg',
-  },
-  {
-    name: 'Digital Training & Courses',
-    description: 'Reliable monetisation for educators, academies, and expert-driven learning platforms.',
-    image: '/Industry 4.jpg',
-  },
-  {
-    name: 'Independent Providers',
-    description: 'Secure, discreet payments for verified individuals and agency-supported bookings.',
-    image: '/Industry 5.jpg',
-  },
-];
+      {/* ══════════════════════ PAIN CAROUSEL ══════════════════════ */}
+      <section className="mtrx-pain-section">
+        {/* Full-section video background */}
+        <video className="mtrx-pain-bg-video" autoPlay muted loop playsInline aria-hidden="true">
+          <source src="/carousel-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="mtrx-pain-bg-overlay" aria-hidden="true" />
 
-function IndustriesCarousel() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    if (isAutoPlaying) {
-      intervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % INDUSTRIES.length);
-      }, 3000);
-    }
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [isAutoPlaying]);
-
-  const handleCardClick = (index: number) => {
-    setActiveIndex(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 10000);
-  };
-
-  return (
-    <section id="industries" className="section section-navy">
-      <div className="container">
-        <SectionHeader
-          dark
-          heading="Industries We Serve"
-          body="We champion businesses across pioneering and non-traditional industries."
-        />
-
-        <div className="carousel-3d">
-          <div className="carousel-track">
-            {INDUSTRIES.map((industry, index) => {
-              const offset = index - activeIndex;
-              const absOffset = Math.abs(offset);
-              const isActive = index === activeIndex;
-
-              return (
-                <div
-                  key={industry.name}
-                  className={`carousel-card ${isActive ? 'active' : ''}`}
-                  onClick={() => handleCardClick(index)}
-                  style={{
-                    transform: `
-                      translateX(${offset * 120}%)
-                      translateZ(${isActive ? 0 : -150 * absOffset}px)
-                      rotateY(${offset * -25}deg)
-                      scale(${isActive ? 1 : 0.8 - absOffset * 0.1})
-                    `,
-                    opacity: absOffset > 2 ? 0 : 1 - absOffset * 0.2,
-                    zIndex: INDUSTRIES.length - absOffset,
-                  }}
-                >
-                  <img src={industry.image} alt={industry.name} className="carousel-card-image" />
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="carousel-dots">
-            {INDUSTRIES.map((_, index) => (
-              <button
-                key={index}
-                className={`carousel-dot ${index === activeIndex ? 'active' : ''}`}
-                onClick={() => handleCardClick(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section 4 — Pricing                                                */
-/* ------------------------------------------------------------------ */
-function PricingSection() {
-  return (
-    <section id="pricing" className="section section-gray">
-      <div className="container">
-        <div className="pricing-split-layout">
-          <div className="pricing-text-content">
-            <AnimatedSection delay={0}>
-              <h2>Simple, Transparent Pricing</h2>
-              <p>No hidden fees. No surprises. Just straightforward pricing that scales with your business.</p>
-            </AnimatedSection>
-          </div>
-
-          <AnimatedSection delay={0.2}>
-            <div className="pricing-main-card">
-              <div className="pricing-main-header">
-                <div className="pricing-stacked">
-                  <div className="pricing-line">
-                    <span className="price-value">£49</span>
-                    <span className="price-desc">/month</span>
-                  </div>
-                  <div className="pricing-line">
-                    <span className="price-value">7%</span>
-                    <span className="price-desc">per transaction</span>
-                  </div>
-                  <div className="pricing-line onboarding-fee">
-                    <span className="price-desc">One time Onboarding fee of £99</span>
-                  </div>
-                </div>
-              </div>
-              <p className="pricing-main-description">
-                No hidden fees. No surprises.
-              </p>
-              <ul className="pricing-features">
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  All payment methods included
-                </li>
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Full dashboard access
-                </li>
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Priority support
-                </li>
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Fast settlements
-                </li>
-              </ul>
-              <Button variant="gold" className="pricing-cta">
-                Get Started
-              </Button>
+        <div className="container mtrx-pain-header-wrap">
+          <AnimatedSection animation="fade-up">
+            <div className="mtrx-sec-head">
+              <span className="mtrx-sec-label">The Problem</span>
+              <h2 className="mtrx-h2">The problems we were<br /><em>built to solve.</em></h2>
+              <p className="mtrx-sec-sub">Legacy payment infrastructure wasn't designed for every merchant. If you've been declined, terminated, or left without recourse, you already know the gap. MTRX closes it.</p>
             </div>
           </AnimatedSection>
         </div>
-      </div>
-    </section>
-  );
-}
 
-/* ------------------------------------------------------------------ */
-/*  Section 4b — Affiliate Programme                                    */
-/* ------------------------------------------------------------------ */
-function AffiliateSection() {
-  const scrollToFounders = () => {
-    const target = document.getElementById('founders-club');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section id="affiliate" className="section section-white">
-      <div className="container">
-        <AnimatedSection delay={0}>
-          <div className="affiliate-image-container">
-            <img src="/Join the family 3.jpg" alt="Join the MTRX PAY Family - Become a Partner" className="affiliate-image" />
-            <Button variant="gold" className="affiliate-btn" onClick={scrollToFounders}>
-              Become a Partner
-            </Button>
+        <div
+          className="mtrx-carousel"
+          onMouseEnter={() => setCarouselPaused(true)}
+          onMouseLeave={() => setCarouselPaused(false)}
+        >
+          <div className="mtrx-carousel-content-wrap">
+            {painPoints.map((item, i) => (
+              <div key={i} className={`mtrx-carousel-slide${i === painIdx ? ' active' : ''}`}>
+                <div className="mtrx-carousel-content">
+                  <div className="mtrx-carousel-problem-block">
+                    <span className="mtrx-pain-marker">THE PROBLEM</span>
+                    <h3 className="mtrx-carousel-title mtrx-carousel-problem-title">{item.problem}</h3>
+                    <p className="mtrx-pain-pbody">{item.pBody}</p>
+                  </div>
+                  <div className="mtrx-carousel-sep" />
+                  <div className="mtrx-carousel-solution-block">
+                    <span className="mtrx-pain-check">MTRX SOLUTION</span>
+                    <h3 className="mtrx-carousel-title mtrx-carousel-solution-title">{item.solution}</h3>
+                    <p className="mtrx-pain-sbody">{item.sBody}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </AnimatedSection>
-      </div>
-    </section>
-  );
-}
 
-/* ------------------------------------------------------------------ */
-/*  Section 5 — Subscription Support                                   */
-/* ------------------------------------------------------------------ */
-function SubscriptionSection() {
-  return (
-    <section id="subscriptions" className="section section-white">
-      <div className="container">
-        <AnimatedSection delay={0}>
-          <div className="subscription-image-container">
-            <img src="/Subscription image.jpg" alt="Subscription Support - Built for recurring billing" className="subscription-image" />
+          <div className="mtrx-carousel-controls">
+            <button
+              className="mtrx-carousel-arrow"
+              onClick={() => setPainIdx(i => (i - 1 + painPoints.length) % painPoints.length)}
+              aria-label="Previous slide"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <div className="mtrx-carousel-dots">
+              {painPoints.map((_, i) => (
+                <button
+                  key={i}
+                  className={`mtrx-carousel-dot${i === painIdx ? ' active' : ''}`}
+                  onClick={() => setPainIdx(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              className="mtrx-carousel-arrow"
+              onClick={() => setPainIdx(i => (i + 1) % painPoints.length)}
+              aria-label="Next slide"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
           </div>
-        </AnimatedSection>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section 8 — Social Media                                           */
-/* ------------------------------------------------------------------ */
-function SocialSection() {
-  return (
-    <section id="social" className="section section-gray">
-      <div className="container" style={{ textAlign: 'center' }}>
-        <SectionHeader
-          heading="Connect With Us"
-          body="Stay updated with the latest news and updates from MTRX PAY."
-        />
-
-        <div className="social-links">
-          <a href="https://twitter.com/mtrxpay" target="_blank" rel="noopener noreferrer" className="social-link">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </a>
-          <a href="https://linkedin.com/company/mtrxpay" target="_blank" rel="noopener noreferrer" className="social-link">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-          <a href="https://instagram.com/mtrxpay" target="_blank" rel="noopener noreferrer" className="social-link">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-          </a>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-/* ------------------------------------------------------------------ */
-/*  Section 9 — Founders Club CTA                                      */
-/* ------------------------------------------------------------------ */
-function FoundersClubSection() {
-  return (
-    <section id="founders-club" className="section section-blue">
-      <div className="container" style={{ textAlign: 'center' }}>
-        <AnimatedSection>
-          <p className="founders-limited">Limited Places Available</p>
-          <h2 style={{ color: '#fff' }}>
-            Become a Founding Partner
-          </h2>
-        </AnimatedSection>
 
-        <AnimatedSection delay={0.15}>
-          <div className="founders-offer">
-            <span className="offer-text">No subscription fees for founding members for the first 90 days*</span>
-            <span className="offer-disclaimer">*onboarding cost remains</span>
-          </div>
-          <p
-            style={{
-              color: 'rgba(255, 255, 255, 0.85)',
-              maxWidth: '550px',
-              margin: '0 auto 2.5rem',
-              lineHeight: 1.8,
-              fontSize: '1.05rem',
-            }}
-          >
-            Limited numbers only. Priority onboarding and dedicated support.
-          </p>
-        </AnimatedSection>
 
-        <AnimatedSection delay={0.3}>
-          <EarlyAccessForm />
-        </AnimatedSection>
-      </div>
-    </section>
-  );
-}
+      {/* ══════════════════════ WHO WE SERVE ══════════════════════ */}
+      {(() => {
+        const verticals = [
+          { tag: 'Digital Finance',    title: 'Digital Asset Platforms',      body: 'Crypto exchanges, Web3 applications, NFT marketplaces, and DeFi services operating at the intersection of technology and finance.',          color: '59, 130, 246' },
+          { tag: 'Financial Markets',  title: 'FX & Trading Platforms',       body: 'Forex brokers, prop trading firms, and investment platforms requiring high-volume, cross-border payment infrastructure.',                       color: '16, 185, 129' },
+          { tag: 'Wellness',           title: 'Botanical & Wellness Brands',  body: 'Plant-based wellness, hemp, and functional health brands navigating a complex but rapidly legitimising regulatory landscape.',                  color: '52, 211, 153' },
+          { tag: 'Health Sciences',    title: 'Nutritional Sciences',         body: 'Supplement, nutraceutical, and functional health brands with high repeat purchase volumes and global distribution.',                            color: '168, 85, 247' },
+          { tag: 'Entertainment',      title: 'Gaming & Entertainment',       body: 'Online gaming operators, skill-based entertainment platforms, and interactive media businesses with international player bases.',                color: '239, 68, 68' },
+          { tag: 'Content',            title: 'Premium Content Platforms',    body: 'Subscription content platforms and creator-led businesses with recurring billing models and global audiences.',                                 color: '244, 114, 182' },
+          { tag: 'Travel',             title: 'Travel & Hospitality',         body: 'OTAs, tour operators, and travel services with high average order values, complex refund cycles, and multi-currency exposure.',                 color: '6, 182, 212' },
+          { tag: 'Commerce',           title: 'Subscription Commerce',        body: 'SaaS, membership, and subscription businesses requiring reliable recurring billing across multiple currencies and jurisdictions.',               color: '99, 102, 241' },
+          { tag: 'Lifestyle',          title: 'Companion & Social Platforms', body: 'Relationship-economy platforms and social connection services operating in the personal companionship and lifestyle space.',                    color: '251, 146, 60' },
+          { tag: 'Education',          title: 'Course Sellers & EdTech',      body: 'Online educators, digital course creators, and learning platforms monetising through one-time purchases, cohorts, or subscriptions.',          color: '234, 179, 8' },
+          { tag: 'Creator Economy',    title: 'Independent Content Creators', body: 'Influencers, digital publishers, and independent creators monetising through memberships, tips, and exclusive digital products.',               color: '20, 184, 166' },
+        ];
+        return (
+          <section className="mtrx-verticals-section">
+            <div className="container">
+              <AnimatedSection animation="fade-up">
+                <div className="mtrx-sec-head">
+                  <span className="mtrx-sec-label">Who We Serve</span>
+                  <h2 className="mtrx-h2">Built for the verticals traditional<br /><em>banking ignores.</em></h2>
+                  <p className="mtrx-sec-sub">MTRX specialises in sectors where conventional processors decline, restrict, or exit without notice. We call them specialist verticals — and we've built our entire infrastructure around them.</p>
+                </div>
+              </AnimatedSection>
 
-/* ------------------------------------------------------------------ */
-/*  Page Export                                                        */
-/* ------------------------------------------------------------------ */
-export function HomePage() {
-  return (
-    <>
-      <HeroSection />
-      <VideoSection />
-      <FeaturesSection />
-      <IndustriesCarousel />
-      <PricingSection />
-      <AffiliateSection />
-      <SubscriptionSection />
-      <FoundersClubSection />
-      <SocialSection />
-    </>
+              <div
+                className="mtrx-vert-carousel"
+                onMouseEnter={() => setVertPaused(true)}
+                onMouseLeave={() => setVertPaused(false)}
+              >
+                <div className="mtrx-vert-carousel-wrap">
+                  {verticals.map((v, i) => (
+                    <div key={i} className={`mtrx-vert-slide${i === vertIdx ? ' active' : ''}`}>
+                      <div className="mtrx-vertical-card" style={{ borderTop: `3px solid rgb(${v.color})`, boxShadow: `0 0 40px rgba(${v.color},.12)` }}>
+                        <span className="mtrx-vertical-tag" style={{ color: `rgb(${v.color})` }}>{v.tag}</span>
+                        <h3 className="mtrx-vertical-title">{v.title}</h3>
+                        <p className="mtrx-vertical-body">{v.body}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mtrx-vert-controls">
+                  <button className="mtrx-carousel-arrow" onClick={() => setVertIdx(i => (i - 1 + 11) % 11)} aria-label="Previous">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                  </button>
+                  <div className="mtrx-carousel-dots">
+                    {verticals.map((_, i) => (
+                      <button key={i} className={`mtrx-carousel-dot${i === vertIdx ? ' active' : ''}`} onClick={() => setVertIdx(i)} aria-label={`Go to slide ${i + 1}`} />
+                    ))}
+                  </div>
+                  <button className="mtrx-carousel-arrow" onClick={() => setVertIdx(i => (i + 1) % 11)} aria-label="Next">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* ══════════════════════ CTA ══════════════════════ */}
+      <section className="mtrx-home-cta">
+        <div className="mtrx-home-cta-glow" aria-hidden="true" />
+        <div className="container">
+          <AnimatedSection animation="fade-up">
+            <div className="mtrx-home-cta-inner">
+              <span className="mtrx-sec-label">Founding Partner Programme</span>
+              <h2 className="mtrx-home-cta-h2">
+                Built for merchants ready<br /><em>to scale properly.</em>
+              </h2>
+              <p className="mtrx-home-cta-sub">
+                Join the first cohort of merchants and partners building on MTRX. Founding access is strictly limited — secure your place before standard terms apply.
+              </p>
+              <div className="mtrx-home-cta-actions">
+                <a href="/join" className="mtrx-btn-gold">Apply for Founding Access</a>
+                <a href="/about" className="mtrx-btn-outline">Learn About Us</a>
+              </div>
+              <p className="mtrx-home-cta-note">Zero subscription fees for 90 days · Dedicated account manager · Locked founding tier pricing</p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+    </div>
   );
 }

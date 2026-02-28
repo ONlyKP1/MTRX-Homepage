@@ -22,8 +22,8 @@ export function ProductPage() {
               <a href="#pricing" className="btn btn-primary btn-animated">
                 View Pricing
               </a>
-              <Link to="/#early-access" className="btn btn-outline btn-animated">
-                Register Interest
+              <Link to="/join" className="btn btn-outline btn-animated">
+                Apply Now
               </Link>
             </div>
           </div>
@@ -473,10 +473,10 @@ export function ProductPage() {
                   </div>
                   <div className="pricing-footer">
                     <Link
-                      to="/#early-access"
+                      to="/join"
                       className={`btn ${tier.featured ? 'btn-primary' : 'btn-outline'} btn-animated`}
                     >
-                      Register Interest
+                      Apply Now
                     </Link>
                   </div>
                 </div>
@@ -547,8 +547,8 @@ export function ProductPage() {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>
-            <Link to="/#early-access" className="btn btn-gold btn-animated">
-              Request Early Access
+            <Link to="/join" className="btn btn-gold btn-animated">
+              Apply for Founding Access
             </Link>
           </AnimatedSection>
         </div>
