@@ -8,7 +8,7 @@ export function AboutPage() {
           [1] HERO — Full-viewport video background, massive headline
       ══════════════════════════════════════════════════════════════ */}
       <section className="mab-hero">
-        <video className="mab-hero-video" autoPlay muted loop playsInline preload="metadata">
+        <video className="mab-hero-video" autoPlay muted loop playsInline preload="auto" fetchPriority="high">
           <source src="/about-hero.mp4" type="video/mp4" />
         </video>
         <div className="mab-hero-overlay" aria-hidden="true" />
