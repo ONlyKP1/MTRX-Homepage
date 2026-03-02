@@ -110,7 +110,6 @@ export function TechnologyPage() {
             <AnimatedSection key={i} animation="fade-up" delay={0.05}>
               <div className={`mtech-module${i % 2 === 1 ? ' mtech-module-alt' : ''}`}>
                 <div className="mtech-module-copy">
-                  <span className="mtech-module-num">{m.num}</span>
                   <span className="mtech-module-label">{m.label}</span>
                   <h2 className="mtech-module-title">{m.title}</h2>
                   <p className="mtech-module-body">{m.body}</p>
@@ -125,7 +124,6 @@ export function TechnologyPage() {
                 </div>
                 <div className="mtech-module-visual">
                   <div className="mtech-module-card">
-                    <span className="mtech-card-num">{m.num}</span>
                     <span className="mtech-card-title">{m.title}</span>
                     <div className="mtech-card-divider" />
                     <ul className="mtech-card-points">
