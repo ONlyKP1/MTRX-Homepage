@@ -690,7 +690,7 @@ small {
 .mab-hero-sub {
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   line-height: 1.7;
-  color: rgba(224,231,242,.65);
+  color: #fff;
   max-width: 50ch;
   font-weight: 400;
 }
