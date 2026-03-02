@@ -8928,7 +8928,7 @@ body.privacy-mode .team-avatar {
 }
 
 @media (max-width: 680px) {
-  .mtrx-footer-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
-  .mtrx-footer-nav { gap: 24px; flex-wrap: wrap; }
-  .mtrx-footer-legal { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .mtrx-footer-inner { flex-direction: column; align-items: center; gap: 24px; }
+  .mtrx-footer-nav { gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .mtrx-footer-legal { flex-direction: column; align-items: center; text-align: center; gap: 6px; }
 }
