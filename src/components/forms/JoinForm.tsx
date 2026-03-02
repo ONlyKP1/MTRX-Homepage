@@ -76,8 +76,8 @@ export function JoinForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `New Founding Partner Application — ${formData.businessName}`,
-          from_name: 'MTRX PAY — Join Now',
+          subject: `New Founding Partner Application: ${formData.businessName}`,
+          from_name: 'MTRX PAY Join Now',
           account_type: formData.accountType,
           business_name: formData.businessName,
           email: formData.email,
@@ -118,7 +118,7 @@ export function JoinForm() {
       <div className="mjn-field-group">
         <span className="mjn-label">
           Account Type
-          {!formData.accountType && <span className="mjn-label-hint">— required</span>}
+          {!formData.accountType && <span className="mjn-label-hint">required</span>}
         </span>
         <div className="mjn-type-toggle">
           {['Business', 'Individual'].map(type => (

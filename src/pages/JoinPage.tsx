@@ -11,7 +11,7 @@ const CheckIcon = () => (
 const benefits = [
   { title: 'Zero subscription fees for 90 days',  sub: 'Full platform access. No monthly cost. Onboarding fee applies.' },
   { title: 'Priority onboarding review',           sub: 'Your application is reviewed first, with dedicated compliance support.' },
-  { title: 'Dedicated account manager',            sub: 'A named person from day one. Direct line — no ticket queues.' },
+  { title: 'Dedicated account manager',            sub: 'A named person from day one. Direct line, no ticket queues.' },
   { title: 'Locked founding tier pricing',         sub: 'Your rates are fixed permanently, regardless of future changes.' },
   { title: 'Direct product input',                 sub: 'Your operational needs shape what we build and prioritise.' },
   { title: 'Early access to new payment rails',    sub: 'First to every new method before general availability.' },

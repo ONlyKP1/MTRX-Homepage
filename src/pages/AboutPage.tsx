@@ -42,7 +42,7 @@ export function AboutPage() {
           <blockquote className="mab-quote-text">
             <span className="mab-quote-mark">&ldquo;</span>Powering the next economy with secure, intelligent payment infrastructure.<span className="mab-quote-mark">&rdquo;</span>
           </blockquote>
-          <cite className="mab-quote-cite">MTRX PAY — Company Mission</cite>
+          <cite className="mab-quote-cite">MTRX PAY Company Mission</cite>
         </AnimatedSection>
       </section>
 
@@ -86,7 +86,7 @@ export function AboutPage() {
           <div className="mab-values-grid">
             {[
               { num: '01', title: 'Merchant First',        body: 'Every decision starts with one question: does this serve our merchants better? We measure our success entirely by the success of the businesses we serve.' },
-              { num: '02', title: 'Radical Transparency',  body: 'Clear pricing, documented processes, honest communication at every step. No hidden fees, no black-box decisions, no surprises — ever.' },
+              { num: '02', title: 'Radical Transparency',  body: 'Clear pricing, documented processes, honest communication at every step. No hidden fees, no black-box decisions, no surprises, ever.' },
               { num: '03', title: 'Technology Led',        body: 'Modern infrastructure and intelligent risk assessment solve the problems legacy processors avoid. We continuously improve against real merchant data.' },
               { num: '04', title: 'Inclusive by Design',   body: 'Legitimate businesses in every industry deserve access to payment infrastructure. Your vertical should never determine your access to financial services.' },
             ].map((v, i) => (
@@ -116,7 +116,7 @@ export function AboutPage() {
           </AnimatedSection>
           <div className="mab-pillars">
             {[
-              { num: '01', title: 'Regulatory Compliance', body: "We don't just meet regulatory requirements — we exceed them. Our compliance framework is designed to give regulators confidence and merchants absolute peace of mind." },
+              { num: '01', title: 'Regulatory Compliance', body: "We don't just meet regulatory requirements, we exceed them. Our compliance framework is designed to give regulators confidence and merchants absolute peace of mind." },
               { num: '02', title: 'Modern Technology',     body: 'API first infrastructure engineered for reliability, security, and rapid iteration. Your integration is built to last, not to be renegotiated every 18 months.' },
               { num: '03', title: 'Partnership Model',     body: 'We work alongside acquiring banks, card schemes, and technology partners who share our vision of inclusive, reliable payment processing for specialist merchants.' },
             ].map((p, i) => (
@@ -161,10 +161,10 @@ export function AboutPage() {
                 <p className="mab-founder-emphasis">If you don't control your infrastructure,<br />you don't control your future.</p>
                 <p>When I began working in emerging digital markets, it became clear that the payment layer was the weakest point. The sectors moving fastest were being supported by rails built for yesterday's economy.</p>
                 <p>So instead of looking for another workaround, I decided to build properly.</p>
-                <p>I partnered with Keiran, a technical product specialist, and we began architecting our own backend from the ground up. Not a reseller model. Not a fragile overlay. But real infrastructure — designed with intelligent onboarding, structured risk controls, dynamic settlement logic, and long-term scalability built in from day one.</p>
+                <p>I partnered with Keiran, a technical product specialist, and we began architecting our own backend from the ground up. Not a reseller model. Not a fragile overlay. But real infrastructure, designed with intelligent onboarding, structured risk controls, dynamic settlement logic, and long-term scalability built in from day one.</p>
                 <p>Wayne believed in that vision early. His support and belief in the scale of what we were building helped shape MTRX's foundation.</p>
                 <p className="mab-founder-pull">MTRX isn't a reaction. It's a deliberate move toward independence.</p>
-                <p>Emerging markets aren't going away. They're expanding. And they require infrastructure that understands their velocity, complexity, and regulatory pressure — without collapsing under it.</p>
+                <p>Emerging markets aren't going away. They're expanding. And they require infrastructure that understands their velocity, complexity, and regulatory pressure, without collapsing under it.</p>
                 <p>We're building MTRX because the next generation of commerce deserves stronger rails.</p>
                 <div className="mab-founder-closing">
                   <span>Built by operators.</span>
@@ -193,10 +193,10 @@ export function AboutPage() {
             <AnimatedSection animation="fade-up" delay={0.12}>
               <div className="mab-founder-letter">
                 <span className="mab-founder-quote-mark" aria-hidden="true">"</span>
-                <p>I joined MTRX Pay because I saw the struggle up close. Peter's frustration with how high-risk merchants were sidelined sparked a fire in me. With a deep background in technology, I've spent years building solutions that bridge complexity and customer needs. This wasn't just another project — it was a mission.</p>
-                <p className="mab-founder-pull">I've always believed that technology is at its best when it's invisible — working seamlessly behind the scenes so customers can thrive.</p>
+                <p>I joined MTRX Pay because I saw the struggle up close. Peter's frustration with how high-risk merchants were sidelined sparked a fire in me. With a deep background in technology, I've spent years building solutions that bridge complexity and customer needs. This wasn't just another project, it was a mission.</p>
+                <p className="mab-founder-pull">I've always believed that technology is at its best when it's invisible, working seamlessly behind the scenes so customers can thrive.</p>
                 <p>That's exactly how we've shaped MTRX Pay. Every piece of the platform is engineered with both precision and empathy. We're here because technology, when done right, ensures no merchant is left without a path to success. My journey from building products to now reshaping high-risk payments is about making sure every merchant gets the tools they deserve.</p>
-                <p>Operationally, we stand alongside our merchants every step of the way. That means real people, real support, and 24/7 availability when it matters most. Payments don't sleep, and neither does responsibility — so our commitment goes beyond the platform itself.</p>
+                <p>Operationally, we stand alongside our merchants every step of the way. That means real people, real support, and 24/7 availability when it matters most. Payments don't sleep, and neither does responsibility, so our commitment goes beyond the platform itself.</p>
                 <p>We combine human support with disciplined operational oversight to ensure our merchants always feel backed, protected, and understood.</p>
                 <p className="mab-founder-emphasis">At the same time, we pledge to remain on the cutting edge of technology, continually innovating and evolving so our partners benefit from the most advanced, secure, and forward-thinking payment infrastructure available.</p>
               </div>
@@ -221,10 +221,10 @@ export function AboutPage() {
             <AnimatedSection animation="fade-up" delay={0.12}>
               <div className="mab-founder-letter">
                 <span className="mab-founder-quote-mark" aria-hidden="true">"</span>
-                <p>I joined MTRX Pay because I believed in what Peter and Keiran were building from the beginning. I've spent years working in marketing and brand leadership, helping businesses communicate clearly, grow responsibly, and build trust in complex environments. When I saw the vision for MTRX — real infrastructure built properly, not another workaround — I knew it needed to be positioned with the same level of care and discipline as the technology behind it.</p>
+                <p>I joined MTRX Pay because I believed in what Peter and Keiran were building from the beginning. I've spent years working in marketing and brand leadership, helping businesses communicate clearly, grow responsibly, and build trust in complex environments. When I saw the vision for MTRX, real infrastructure built properly, not another workaround, I knew it needed to be positioned with the same level of care and discipline as the technology behind it.</p>
                 <p className="mab-founder-pull">My role is to ensure that how we present ourselves reflects who we are: measured, credible, and aligned with regulatory expectations.</p>
-                <p>In markets where scrutiny is high and trust is everything, communication cannot be exaggerated or reactive — it must be accurate, responsible, and consistent.</p>
-                <p>Working alongside Peter and Keiran, I focus on bringing cohesion to our message — ensuring that product, operations, and market presence move in step. Innovation is important, but so is restraint. Growth matters, but so does compliance. My responsibility is to help make sure MTRX stands confidently at the edge of innovation while remaining grounded in transparency and accountability.</p>
+                <p>In markets where scrutiny is high and trust is everything, communication cannot be exaggerated or reactive, it must be accurate, responsible, and consistent.</p>
+                <p>Working alongside Peter and Keiran, I focus on bringing cohesion to our message, ensuring that product, operations, and market presence move in step. Innovation is important, but so is restraint. Growth matters, but so does compliance. My responsibility is to help make sure MTRX stands confidently at the edge of innovation while remaining grounded in transparency and accountability.</p>
                 <div className="mab-founder-closing">
                   <span>We're not here to create noise.</span>
                   <span className="mab-founder-emphasis-inline">We're here to build belief.</span>

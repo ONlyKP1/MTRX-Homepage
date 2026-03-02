@@ -181,7 +181,7 @@ export function HomePage() {
       <div className="mtrx-metrics-strip">
         <div className="container">
           <p className="mtrx-metrics-disclaimer">
-            Target platform metrics — pre-launch
+            Target platform metrics, pre-launch
           </p>
           <div className="mtrx-metrics-row">
             <AnimatedSection animation="fade-up" delay={0} className="mtrx-metric">
@@ -330,7 +330,7 @@ export function HomePage() {
                 <div className="mtrx-sec-head">
                   <span className="mtrx-sec-label">Who We Serve</span>
                   <h2 className="mtrx-h2">Built for the verticals traditional<br /><em>banking ignores.</em></h2>
-                  <p className="mtrx-sec-sub">MTRX specialises in sectors where conventional processors decline, restrict, or exit without notice. We call them specialist verticals — and we've built our entire infrastructure around them.</p>
+                  <p className="mtrx-sec-sub">MTRX specialises in sectors where conventional processors decline, restrict, or exit without notice. We call them specialist verticals, and we've built our entire infrastructure around them.</p>
                 </div>
               </AnimatedSection>
 
@@ -381,7 +381,7 @@ export function HomePage() {
                 Built for merchants ready<br /><em>to scale properly.</em>
               </h2>
               <p className="mtrx-home-cta-sub">
-                Join the first cohort of merchants and partners building on MTRX. Founding access is strictly limited — secure your place before standard terms apply.
+                Join the first cohort of merchants and partners building on MTRX. Founding access is strictly limited, secure your place before standard terms apply.
               </p>
               <div className="mtrx-home-cta-actions">
                 <a href="/join" className="mtrx-btn-gold">Apply for Founding Access</a>
