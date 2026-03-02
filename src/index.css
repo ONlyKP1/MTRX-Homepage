@@ -8863,8 +8863,9 @@ body.privacy-mode .team-avatar {
 }
 .mtrx-footer-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 32px;
   padding-bottom: 44px;
 }
 .mtrx-footer-logo {
