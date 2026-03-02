@@ -120,7 +120,6 @@ export function AboutPage() {
             ].map((p, i) => (
               <AnimatedSection key={i} animation="fade-up" delay={i * 0.08}>
                 <div className="mab-pillar">
-                  <span className="mab-pillar-num">{p.num}</span>
                   <h3 className="mab-pillar-title">{p.title}</h3>
                   <p className="mab-pillar-body">{p.body}</p>
                 </div>
