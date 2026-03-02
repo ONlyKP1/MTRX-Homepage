@@ -25,9 +25,9 @@ const modules = [
   {
     num: '04',
     label: 'Wallet Infrastructure',
-    title: 'Programmatic Wallet Layer',
-    body: 'Issue wallets programmatically for merchants, partners, or end customers. Monitor every balance in real time across multi-asset portfolios. Set sweep rules, reserve thresholds, and settlement triggers all through a single API.',
-    points: ['Wallets created at scale via API', 'Multi-asset balance monitoring', 'Configurable sweep and reserve logic', 'Automated settlement triggers'],
+    title: 'Secured Merchant Wallet Layer',
+    body: 'We create dedicated, secured and insured wallets for every merchant we onboard. Each wallet supports multi-asset balances with real-time monitoring, configurable sweep rules, reserve thresholds, and automated settlement — all managed through a single API.',
+    points: ['Dedicated merchant wallets, secured and insured', 'Multi-asset balance monitoring in real time', 'Configurable sweep and reserve logic', 'Automated settlement triggers'],
   },
   {
     num: '05',
