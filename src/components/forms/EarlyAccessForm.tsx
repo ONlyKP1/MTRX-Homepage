@@ -133,8 +133,8 @@ export function EarlyAccessForm() {
             />
           </svg>
         </div>
-        <h3>Thank You!</h3>
-        <p>We've received your registration. Our team will be in touch soon with next steps.</p>
+        <h3>Application Received</h3>
+        <p>Thank you for applying to the Founding Partner Programme.</p>
       </div>
     );
   }

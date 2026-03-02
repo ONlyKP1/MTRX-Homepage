@@ -107,7 +107,7 @@ export function JoinForm() {
           </svg>
         </div>
         <h3 className="mjn-success-h3">Application Received</h3>
-        <p className="mjn-success-p">Thank you for applying to the Founding Partner Programme. Our team will review your application and be in touch within 48 hours.</p>
+        <p className="mjn-success-p">Thank you for applying to the Founding Partner Programme.</p>
       </div>
     );
   }
