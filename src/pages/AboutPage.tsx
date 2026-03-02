@@ -92,8 +92,6 @@ export function AboutPage() {
             ].map((v, i) => (
               <AnimatedSection key={i} animation="fade-up" delay={i * 0.07}>
                 <div className="mab-value-card">
-                  <span className="mab-value-num">{v.num}</span>
-                  <div className="mab-value-divider" aria-hidden="true" />
                   <h3 className="mab-value-title">{v.title}</h3>
                   <p className="mab-value-body">{v.body}</p>
                 </div>
