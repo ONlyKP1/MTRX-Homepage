@@ -839,8 +839,9 @@ small {
   opacity: 0;
   transition: opacity .35s;
 }
-.mab-value-card:hover { background: rgba(197,164,78,.03); }
+.mab-value-card:hover { background: rgba(197,164,78,.04); border-top: 2px solid #C5A44E; }
 .mab-value-card:hover::after { opacity: 1; }
+.mab-value-card:hover .mab-value-title { color: #C5A44E; }
 .mab-value-num {
   font-size: .6rem;
   font-weight: 800;
@@ -863,6 +864,7 @@ small {
   line-height: 1.18;
   letter-spacing: -.025em;
   margin: 0 0 24px;
+  transition: color .25s;
 }
 .mab-value-body {
   font-size: .93rem;
