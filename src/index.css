@@ -1148,12 +1148,23 @@ small {
   .mab-approach { padding: 72px 0; }
   .mab-team { padding: 72px 0; }
   .mab-team-grid { grid-template-columns: repeat(2, 1fr); }
-  .mab-cta { padding: 72px 0 96px; }
+  .mab-cta { padding: 64px 0 80px; }
   .mab-cta-form { padding: 32px 20px; }
-  .mab-cta-head .mtrx-h2 { font-size: clamp(1.6rem, 5vw, 2.4rem); }
-  .mab-cta-sub { font-size: .9rem; max-width: 100%; padding: 0 16px; }
-  .mab-cta-btn { width: 100%; text-align: center; box-sizing: border-box; max-width: 320px; }
-  .mab-cta-head { padding: 0 16px; }
+  .mab-cta-glow { width: 600px; height: 500px; top: -120px; }
+  .mab-cta-head { padding: 0 20px; gap: 18px; }
+  .mab-cta-head .mtrx-sec-label { font-size: .6rem; }
+  .mab-cta-head .mtrx-h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); max-width: 100%; }
+  .mab-cta-sub { font-size: .88rem; line-height: 1.7; max-width: 100%; padding: 0; }
+  .mab-cta-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    font-size: .88rem;
+    margin-top: 8px;
+  }
 }
 
 /* Hero */
