@@ -82,7 +82,7 @@ export function JoinPage() {
               <div className="mtrx-pricing-price">£49<span>/month</span></div>
               <div className="mtrx-pricing-txn">+ 7% per transaction</div>
               <ul className="mtrx-pricing-features">
-                <li><CheckIcon /> £199 one-time setup fee</li>
+                <li><CheckIcon /> £149 one-time setup fee</li>
                 <li><CheckIcon /> 50+ payment methods</li>
                 <li><CheckIcon /> Dedicated account manager</li>
                 <li><CheckIcon /> Founding rates locked permanently</li>
