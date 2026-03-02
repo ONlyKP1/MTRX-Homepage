@@ -884,33 +884,24 @@ small {
   max-width: 600px;
 }
 .mab-pillars {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.05);
 }
 .mab-pillar {
-  display: grid;
-  grid-template-columns: 72px 280px 1fr;
-  gap: 0 64px;
-  align-items: start;
-  padding: 64px 0;
-  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 64px 48px;
+  background: var(--bg0);
   transition: background .25s;
   cursor: default;
 }
-.mab-pillar:last-child { border-bottom: 1px solid rgba(255,255,255,.06); }
-.mab-pillar:hover .mab-pillar-num { color: #C5A44E; }
-.mab-pillar:hover .mab-pillar-title { color: rgba(255,255,255,.95); }
-.mab-pillar-num {
-  font-size: .65rem;
-  font-weight: 800;
-  letter-spacing: .2em;
-  color: rgba(197,164,78,.4);
-  text-transform: uppercase;
-  padding-top: 6px;
-  transition: color .25s;
-}
+.mab-pillar:hover { background: rgba(197,164,78,.03); }
+.mab-pillar:hover .mab-pillar-title { color: #fff; }
 .mab-pillar-title {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: rgba(255,255,255,.88);
   line-height: 1.25;
@@ -1052,16 +1043,15 @@ small {
   .mab-founder-layout { grid-template-columns: 1fr; gap: 52px; }
   .mab-founder-sidebar { position: static; flex-direction: row; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
   .mab-founder-meta { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .mab-pillar { grid-template-columns: 48px 1fr; gap: 0 32px; }
-  .mab-pillar-body { grid-column: 2; margin-top: 12px; }
+  .mab-pillars { grid-template-columns: 1fr; }
+  .mab-pillar { padding: 48px 32px; }
 }
 @media (max-width: 680px) {
   .mab-stats-grid { grid-template-columns: 1fr 1fr; }
   .mab-stat:nth-child(3) { border-left: 1px solid rgba(255,255,255,.06); }
   .mab-values-grid { grid-template-columns: 1fr; }
   .mab-value-card { padding: 52px 40px; }
-  .mab-pillar { grid-template-columns: 1fr; }
-  .mab-pillar-num { display: none; }
+  .mab-pillar { padding: 40px 24px; }
   .mab-hero-content { padding: 0 24px 100px; }
 }
 @media (max-width: 480px) {
