@@ -69,13 +69,14 @@ export function TechnologyPage() {
 
       {/* ══════════ HERO ══════════ */}
       <section className="mtech-hero">
-        <div className="mtech-hero-grid" aria-hidden="true" />
-        <div className="mtech-hero-glow" aria-hidden="true" />
+        <video className="mtech-hero-video" autoPlay muted loop playsInline preload="metadata">
+          <source src="/tech-hero.mp4" type="video/mp4" />
+        </video>
+        <div className="mtech-hero-overlay" aria-hidden="true" />
         <div className="container">
           <AnimatedSection animation="fade-up">
             <div className="mtech-hero-inner">
-              <span className="mtrx-sec-label">Platform Technology</span>
-              <h1 className="mtrx-h1 mtech-hero-h1">
+              <h1 className="mtrx-h1 mtech-hero-h1 page-hero-h1">
                 Infrastructure built for<br />
                 <em>precision at every layer.</em>
               </h1>

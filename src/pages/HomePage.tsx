@@ -108,7 +108,7 @@ export function HomePage() {
                 <p className="mtrx-eyebrow">MTRX PAY Launching Q2 2026</p>
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.08}>
-                <h1 className="mtrx-h1">
+                <h1 className="mtrx-h1 mtrx-home-hero-h1 page-hero-h1">
                   Accept Payments.<br />
                   Eliminate Chargebacks.<br />
                   <em>Approved Where Others Declined.</em>

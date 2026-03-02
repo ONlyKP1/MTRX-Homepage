@@ -45,7 +45,7 @@ export function JoinPage() {
           <AnimatedSection animation="fade-up">
             <div className="mjn-hero-inner">
               <span className="mjn-pill">Founding Partner Programme · Limited Places</span>
-              <h1 className="mjn-hero-h1">
+              <h1 className="mjn-hero-h1 page-hero-h1">
                 Become a<br /><em>Founding Partner.</em>
               </h1>
               <p className="mjn-hero-sub">
