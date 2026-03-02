@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { AnimatedSection, AnimatedCounter } from '../components/AnimatedSection';
 
+const CheckIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <circle cx="8" cy="8" r="8" fill="rgba(197,164,78,.18)" />
+    <polyline points="4.5 8.2 7 10.8 11.5 5.5" stroke="#C5A44E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const painPoints = [
   {
     problem: 'Accounts terminated overnight',
@@ -369,6 +376,32 @@ export function HomePage() {
           </section>
         );
       })()}
+
+      {/* ══════════════════════ PRICING ══════════════════════ */}
+      <section className="mtrx-pricing-section">
+        <div className="mtrx-pricing-glow" aria-hidden="true" />
+        <div className="container">
+          <AnimatedSection animation="fade-up">
+            <div className="mtrx-pricing-card">
+              <span className="mtrx-pricing-tag">Founding Partner</span>
+              <div className="mtrx-pricing-price">£49<span>/month</span></div>
+              <div className="mtrx-pricing-txn">+ 7% per transaction</div>
+              <ul className="mtrx-pricing-features">
+                <li><CheckIcon /> Zero setup fees</li>
+                <li><CheckIcon /> 50+ payment methods</li>
+                <li><CheckIcon /> Dedicated account manager</li>
+                <li><CheckIcon /> Managed dispute resolution</li>
+                <li><CheckIcon /> Integrated KYC/KYB/AML</li>
+                <li><CheckIcon /> Founding rates locked permanently</li>
+              </ul>
+              <div className="mtrx-pricing-cta">
+                <a href="/join" className="mtrx-btn-gold">Apply for Founding Access</a>
+              </div>
+              <p className="mtrx-pricing-note">Zero subscription fees for 90 days · Cancel anytime</p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* ══════════════════════ CTA ══════════════════════ */}
       <section className="mtrx-home-cta">

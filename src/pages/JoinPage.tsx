@@ -72,6 +72,27 @@ export function JoinPage() {
         </div>
       </section>
 
+      {/* ══════════ PRICING ══════════ */}
+      <section className="mjn-pricing-section">
+        <div className="mtrx-pricing-glow" aria-hidden="true" />
+        <div className="container">
+          <AnimatedSection animation="fade-up">
+            <div className="mtrx-pricing-card">
+              <span className="mtrx-pricing-tag">Founding Partner Pricing</span>
+              <div className="mtrx-pricing-price">£49<span>/month</span></div>
+              <div className="mtrx-pricing-txn">+ 7% per transaction</div>
+              <ul className="mtrx-pricing-features">
+                <li><CheckIcon /> Zero setup fees</li>
+                <li><CheckIcon /> 50+ payment methods</li>
+                <li><CheckIcon /> Dedicated account manager</li>
+                <li><CheckIcon /> Founding rates locked permanently</li>
+              </ul>
+              <p className="mtrx-pricing-note">Subscription waiver applies for the first 90 days</p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ══════════ SPLIT: BENEFITS + FORM ══════════ */}
       <section className="mjn-split-section" id="apply">
         <div className="container">
