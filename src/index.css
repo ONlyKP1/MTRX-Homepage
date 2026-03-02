@@ -8531,7 +8531,7 @@ body.privacy-mode .team-avatar {
 .mtech-hero-sub {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--muted);
+  color: #fff;
   max-width: 560px;
 }
 
