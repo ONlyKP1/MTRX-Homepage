@@ -22,7 +22,7 @@ export function Footer() {
 
         <div className="mtrx-footer-legal">
           <span>© 2026 MTRX PAY LIMITED · England & Wales · Co. No. 16913646 · 71–75 Shelton Street, London WC2H 9JQ</span>
-          <span>MIDAS TRANSACTION EXCHANGE FZCO · License No. 75905</span>
+          <span>MIDAS TRANSACTION EXCHANGE FZCO · License No. 75905 · IFZA Business Park, DDP, Dubai</span>
         </div>
 
       </div>
