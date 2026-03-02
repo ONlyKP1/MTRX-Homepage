@@ -895,11 +895,13 @@ small {
   gap: 20px;
   padding: 64px 48px;
   background: var(--bg0);
-  transition: background .25s;
+  transition: background .25s, border-color .25s;
   cursor: default;
+  min-height: 320px;
+  border-top: 2px solid transparent;
 }
-.mab-pillar:hover { background: rgba(197,164,78,.03); }
-.mab-pillar:hover .mab-pillar-title { color: #fff; }
+.mab-pillar:hover { background: rgba(197,164,78,.04); border-top-color: #C5A44E; }
+.mab-pillar:hover .mab-pillar-title { color: #C5A44E; }
 .mab-pillar-title {
   font-size: 1.4rem;
   font-weight: 700;
