@@ -8030,8 +8030,8 @@ body.privacy-mode .team-avatar {
 }
 .mjn-benefits-footnote {
   font-size: .7rem;
-  color: var(--muted);
-  opacity: .55;
+  color: #fff;
+  opacity: .7;
   line-height: 1.6;
 }
 
@@ -8311,8 +8311,8 @@ body.privacy-mode .team-avatar {
 .mjn-form-footnote {
   margin-top: 4px;
   font-size: .65rem;
-  color: var(--muted);
-  opacity: .4;
+  color: #fff;
+  opacity: .7;
   text-align: center;
   line-height: 1.6;
 }
@@ -8795,6 +8795,8 @@ body.privacy-mode .team-avatar {
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .mtech-stats-inner { grid-template-columns: repeat(3, 1fr); }
+  .mtech-stat-val { font-size: 1.1rem; }
+  .mtech-stat-label { font-size: .58rem; }
   .mtech-module { grid-template-columns: 1fr; gap: 40px; }
   .mtech-module-alt .mtech-module-copy { order: 0; }
   .mtech-module-alt .mtech-module-visual { order: 0; }
@@ -8802,11 +8804,19 @@ body.privacy-mode .team-avatar {
   .mtech-rails-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
+  .mtech-stats-bar { padding: 16px 0; }
   .mtech-stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .mtech-stat { padding: 16px 12px; gap: 4px; }
+  .mtech-stat-val { font-size: 1rem; }
+  .mtech-stat-label { font-size: .55rem; letter-spacing: .06em; }
   .mtech-rails-grid { grid-template-columns: 1fr; }
   .mtech-hero { padding: calc(72px + 60px) 0 64px; }
   .mtech-modules { padding: 64px 0 40px; }
   .mtech-module { padding: 56px 0; gap: 32px; }
+}
+@media (max-width: 400px) {
+  .mtech-stats-inner { grid-template-columns: 1fr; }
+  .mtech-stat { flex-direction: row; justify-content: space-between; padding: 14px 20px; }
 }
 
 
