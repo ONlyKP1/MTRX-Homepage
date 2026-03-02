@@ -7696,16 +7696,20 @@ body.privacy-mode .team-avatar {
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .mtrx-carousel-content-wrap { height: 420px; }
-  .mtrx-carousel-slide { display: none; }
+  .mtrx-carousel-content-wrap { height: auto; min-height: 0; }
+  .mtrx-carousel-slide { position: relative; inset: auto; display: none; }
   .mtrx-carousel-slide.active { display: flex; }
   .mtrx-carousel-content { padding: 40px 32px; }
+  .mtrx-carousel-title { font-size: 1.3rem; }
 }
 @media (max-width: 600px) {
-  .mtrx-carousel-content-wrap { height: auto; min-height: 360px; }
-  .mtrx-carousel-content { padding: 32px 24px; }
-  .mtrx-carousel-title { font-size: 1rem; }
+  .mtrx-carousel-content { padding: 28px 20px; }
+  .mtrx-carousel-title { font-size: 1.1rem; }
+  .mtrx-carousel-problem-block,
+  .mtrx-carousel-solution-block { padding: 24px 0; gap: 10px; }
   .mtrx-pain-section { padding: 72px 0 0; }
+  .mtrx-pain-pbody, .mtrx-pain-sbody { font-size: .88rem; }
+  .mtrx-carousel-controls { padding: 28px 0 60px; }
 }
 
 /* ══════════════════════════════════════════════════════════════════
