@@ -1150,6 +1150,10 @@ small {
   .mab-team-grid { grid-template-columns: repeat(2, 1fr); }
   .mab-cta { padding: 72px 0 96px; }
   .mab-cta-form { padding: 32px 20px; }
+  .mab-cta-head .mtrx-h2 { font-size: clamp(1.6rem, 5vw, 2.4rem); }
+  .mab-cta-sub { font-size: .9rem; max-width: 100%; padding: 0 16px; }
+  .mab-cta-btn { width: 100%; text-align: center; box-sizing: border-box; max-width: 320px; }
+  .mab-cta-head { padding: 0 16px; }
 }
 
 /* Hero */
