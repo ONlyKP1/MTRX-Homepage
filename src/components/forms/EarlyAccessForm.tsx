@@ -92,6 +92,7 @@ export function EarlyAccessForm() {
         },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
+          to: 'info@mtrxpay.com',
           subject: `New Early Access Request: ${formData.businessName}`,
           from_name: 'MTRX PAY Website',
           account_type: formData.accountType,

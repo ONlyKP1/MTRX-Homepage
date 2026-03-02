@@ -76,6 +76,7 @@ export function JoinForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
+          to: 'info@mtrxpay.com',
           subject: `New Founding Partner Application: ${formData.businessName}`,
           from_name: 'MTRX PAY Join Now',
           account_type: formData.accountType,
