@@ -719,7 +719,7 @@ small {
   background: var(--bg1);
   border-top: 1px solid rgba(255,255,255,.05);
   border-bottom: 1px solid rgba(255,255,255,.05);
-  padding: 160px 40px;
+  padding: 80px 40px;
   text-align: center;
   overflow: hidden;
 }
