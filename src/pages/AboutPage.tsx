@@ -109,7 +109,7 @@ export function AboutPage() {
           <AnimatedSection animation="fade-up">
             <div className="mab-approach-head">
               <span className="mtrx-sec-label">How We Work</span>
-              <h2 className="mtrx-h2 mtrx-left">Infrastructure built on<br /><em>three core pillars.</em></h2>
+              <h2 className="mtrx-h2">Infrastructure built on<br /><em>three core pillars.</em></h2>
             </div>
           </AnimatedSection>
           <div className="mab-pillars">
