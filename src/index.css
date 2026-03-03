@@ -642,7 +642,7 @@ small {
 .mab-hero {
   position: relative;
   width: 100%;
-  padding: calc(72px + 160px) 0 160px;
+  padding: calc(72px + 100px) 0 100px;
   overflow: hidden;
 }
 .mab-hero-video {
