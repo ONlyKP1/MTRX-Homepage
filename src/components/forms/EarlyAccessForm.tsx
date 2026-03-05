@@ -3,6 +3,9 @@ import { useState } from 'react';
 
 const WEB3FORMS_KEY = '236d967c-3ac9-495a-a50e-0e0f16d0f256';
 
+// N8N Webhook URL for onboarding workflow
+const N8N_WEBHOOK_URL = 'https://peterwatt2426.app.n8n.cloud/webhook/onboarding-start';
+
 interface FormData {
   accountType: string;
   businessName: string;
@@ -85,7 +88,24 @@ export function EarlyAccessForm() {
     setError('');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // Send to N8N for onboarding workflow processing
+      const n8nResponse = await fetch(N8N_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          accountType: formData.accountType,
+          businessName: formData.businessName,
+          email: formData.email,
+          industry: formData.industry,
+          volume: formData.volume,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+
+      // Also send to Web3Forms for email notification
+      await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -103,9 +123,7 @@ export function EarlyAccessForm() {
         }),
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (n8nResponse.ok) {
         setSubmitted(true);
       } else {
         setError('Something went wrong. Please try again.');
