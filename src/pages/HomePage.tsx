@@ -121,7 +121,7 @@ export function HomePage() {
             {/* Left — copy */}
             <div className="mtrx-hero-copy">
               <AnimatedSection animation="fade-up" delay={0}>
-                <p className="mtrx-eyebrow">MTRX PAY Launching Q2 2026</p>
+                <p className="mtrx-eyebrow">MTRX PAY</p>
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.08}>
                 <h1 className="mtrx-h1 mtrx-home-hero-h1 page-hero-h1">

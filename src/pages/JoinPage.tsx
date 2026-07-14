@@ -20,7 +20,7 @@ const benefits = [
 
 const stats = [
   { num: '90',  suf: ' days', label: 'Zero subscription fees' },
-  { num: 'Q2',  suf: ' 2026', label: 'Platform launch' },
+  { num: '24',  suf: '/7',    label: 'Dedicated support' },
   { num: '50',  suf: '+',     label: 'Payment methods' },
 ];
 
