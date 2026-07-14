@@ -49,8 +49,9 @@ export function JoinPage() {
                 Become a<br /><em>Founding Partner.</em>
               </h1>
               <p className="mjn-hero-sub">
-                Join the first wave of merchants and partners building the future
-                of compliant, structured payment infrastructure.
+                Join the first wave of merchants and partners building on compliant,
+                structured payment infrastructure. Every application is subject to
+                full onboarding and due diligence review.
               </p>
               <a href="#apply" className="mtrx-btn-gold mjn-hero-cta">Apply for Founding Access ↓</a>
             </div>

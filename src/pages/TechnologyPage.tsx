@@ -34,7 +34,7 @@ const modules = [
     label: 'Dispute Management',
     title: 'Dynamic Dispute Logic',
     body: 'Evidence collection, configurable response rules, and real-time dashboards. Systematic protection of your dispute win rate at every stage, from first notification to final resolution.',
-    points: ['Automated evidence packaging from live data', 'Configurable win rules by industry and ticket size', 'Deadline tracking with zero manual input', 'Win rate analytics and trend alerts'],
+    points: ['Automated evidence packaging from live data', 'Configurable rules by merchant profile and ticket size', 'Deadline tracking with zero manual input', 'Win rate analytics and trend alerts'],
   },
   {
     num: '06',

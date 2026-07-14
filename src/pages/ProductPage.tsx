@@ -12,11 +12,12 @@ export function ProductPage() {
           <div className="hero-content" style={{ textAlign: 'center' }}>
             <span className="hero-tag">Product Proposition</span>
             <h1 className="hero-title animate-hero">
-              Payment Processing That Works for Your Business
+              One Platform. Accept, Monitor, and Settle Compliantly.
             </h1>
             <p className="hero-subtitle animate-hero-delayed">
-              We approve 99.99% of legitimate businesses. The processors that rejected you? They
-              are the anomaly, not you.
+              Automated onboarding and verification, continuous transaction monitoring, and multi
+              rail settlement. Every merchant assessed on conduct and evidence, never on category
+              alone.
             </p>
             <div className="hero-cta animate-hero-delayed-2">
               <a href="#pricing" className="btn btn-primary btn-animated">
@@ -76,10 +77,10 @@ export function ProductPage() {
                   <circle cx="12" cy="12" r="10" />
                   <path d="M9 12l2 2 4-4" />
                 </svg>
-                <h4>Universal Acceptance</h4>
+                <h4>Conduct Based Underwriting</h4>
                 <p>
-                  We say yes to legitimate businesses. Your industry doesn't define your access to
-                  payments.
+                  Applications are assessed on verified identity, compliance posture, and real
+                  processing data, not on sector labels.
                 </p>
               </div>
             </AnimatedSection>
@@ -542,8 +543,8 @@ export function ProductPage() {
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
             <p style={{ color: '#ffffff' }}>
-              Join the businesses who are choosing a payment processor that works with them, not
-              against them.
+              Join the businesses building on compliant infrastructure designed for the way they
+              actually operate. All applications are subject to full due diligence.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.3}>

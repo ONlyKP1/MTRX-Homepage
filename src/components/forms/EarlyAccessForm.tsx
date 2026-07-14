@@ -16,17 +16,12 @@ interface FormData {
 
 const INDUSTRY_OPTIONS = [
   'Select your industry',
-  'E-commerce & Retail',
+  'Digital Content & Subscriptions',
+  'Creator Economy',
+  'Online Marketplaces & E-commerce',
+  'Health & Wellness',
+  'Professional Services',
   'SaaS & Technology',
-  'Content Creators',
-  'Gaming & iGaming',
-  'Cryptocurrency & Web3',
-  'CBD & Cannabis',
-  'Nutraceuticals',
-  'Forex & Trading',
-  'Travel & Tourism',
-  'Adult Entertainment',
-  'Subscription Services',
   'Other',
 ];
 

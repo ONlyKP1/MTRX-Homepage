@@ -14,18 +14,11 @@ interface JoinFormData {
 
 const INDUSTRY_OPTIONS = [
   'Select your industry',
-  'Digital Asset Platforms',
-  'FX & Trading Platforms',
-  'Botanical & Wellness',
-  'Nutritional Sciences',
-  'Gaming & Entertainment',
-  'Premium Content Platforms',
-  'Travel & Hospitality',
-  'Subscription Commerce',
-  'Companion & Social Platforms',
-  'Course Sellers & EdTech',
-  'Independent Content Creators',
-  'E-commerce & Retail',
+  'Digital Content & Subscriptions',
+  'Creator Economy',
+  'Online Marketplaces & E-commerce',
+  'Health & Wellness',
+  'Professional Services',
   'SaaS & Technology',
   'Other',
 ];

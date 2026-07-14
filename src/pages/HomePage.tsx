@@ -10,40 +10,40 @@ const CheckIcon = () => (
 
 const painPoints = [
   {
-    problem: 'Accounts terminated overnight',
-    pBody: 'Processors shut down merchants in specialist verticals without warning. Funds frozen, operations halted, no path to reinstatement.',
-    solution: 'Dedicated rails. Contractual certainty.',
-    sBody: 'MTRX operates isolated processing infrastructure per merchant. No shared risk pools. No guilt-by-association shutdowns.',
+    problem: 'Risk assessed by category, not conduct',
+    pBody: 'Conventional providers score risk by sector. Once a category is labelled difficult, lawful and well run businesses within it are refused, offboarded, or quoted unworkable terms, regardless of their own record.',
+    solution: 'Underwriting on verified conduct.',
+    sBody: 'Every application is assessed on verified identity, compliance posture, and real processing data. Merchants are judged on their own record, never on assumptions about their sector.',
   },
   {
-    problem: 'Cash locked in rolling reserves',
-    pBody: 'Up to 15% of monthly volume withheld for 90+ days as standard, regardless of actual performance, history, or dispute data.',
-    solution: 'Performance based reserve logic.',
-    sBody: 'Reserves calculated dynamically against your real chargeback and settlement data, not industry wide assumptions.',
-  },
-  {
-    problem: 'Chargebacks left undefended',
-    pBody: 'Standard processors offer no dispute support. Evidence gathering, deadline tracking, and filing are left entirely to the merchant.',
-    solution: 'Managed dispute resolution, automated and human led.',
-    sBody: 'Evidence packaged from live transaction data and filed before every deadline. Where automation reaches its limits, our disputes team steps in directly, reviewing cases, engaging acquirers, and representing your position with the rigour of a dedicated compliance function.',
-  },
-  {
-    problem: 'Declined on category alone',
-    pBody: 'Applications rejected based on business type before a single data point is reviewed. No appeal process. No explanation given.',
-    solution: 'Underwriting on real merchant data.',
-    sBody: 'MTRX assesses applications on actual performance, compliance posture, and processing history. Never industry stereotypes.',
+    problem: 'Commerce pushed beyond regulated oversight',
+    pBody: 'Excluded businesses do not stop trading. They migrate to cash, informal arrangements, and offshore providers, taking transparency, consumer protection, and tax visibility with them.',
+    solution: 'Lawful commerce kept inside the system.',
+    sBody: 'Monitored, reported, and fully auditable payment flows bring underserved businesses into regulated view rather than pushing them outside it.',
   },
   {
     problem: 'Compliance that stalls onboarding',
-    pBody: 'Manual KYB/KYC processes, weeks of back and forth, and ongoing AML obligations that consume resources without adding value.',
-    solution: 'End to end automated compliance.',
-    sBody: 'KYB, KYC, AML monitoring, and PEP screening handled in a single automated flow. Onboarding in hours, not weeks.',
+    pBody: 'Manual KYB and KYC processes, weeks of correspondence, and ongoing AML obligations that consume resources without measurably reducing risk.',
+    solution: 'Embedded compliance, automated end to end.',
+    sBody: 'Business verification, identity checks, sanctions and PEP screening, and continuous AML monitoring run inside the core payment flow rather than bolted on beside it.',
   },
   {
-    problem: "Customers who can't pay",
-    pBody: 'Narrow payment method support turns away international buyers, digital native customers, and anyone outside legacy banking rails.',
-    solution: '50+ payment methods. Every customer.',
-    sBody: 'Stablecoins, crypto, tokenised assets, open banking, card rails, and SWIFT/SEPA. All through one integration.',
+    problem: 'Dependence on a single rail',
+    pBody: 'When acceptance rests on one processor or one settlement rail, a single policy change or outage can halt a business entirely.',
+    solution: 'Multi rail settlement by design.',
+    sBody: 'Bank rails, open banking, and digital asset settlement operate as complementary primary rails. Routing adapts automatically to protect acceptance and resilience.',
+  },
+  {
+    problem: 'Reserves set by sector assumption',
+    pBody: 'Working capital withheld for months on the basis of what a business is, rather than what its actual settlement and dispute data shows.',
+    solution: 'Performance based reserve logic.',
+    sBody: 'Reserves are calculated dynamically against real chargeback and settlement performance, not sector wide averages.',
+  },
+  {
+    problem: 'Disputes left undefended',
+    pBody: 'Evidence gathering, deadline tracking, and filing are routinely left entirely to the merchant, with no structured support.',
+    solution: 'Managed dispute resolution.',
+    sBody: 'Evidence is packaged from live transaction data and filed before every deadline. Where automation reaches its limits, our disputes team reviews the case and represents the merchant position directly.',
   },
 ];
 
@@ -55,7 +55,16 @@ const txnFeed = [
   { from: 'BTC', crypto: 'BTC',  to: 'GBP', amount: '£31,750.00', risk: 88, label: 'AML Clear',     status: 'Settled',  time: '21s' },
 ];
 
-const tickerItems = ['KYB Verified', 'KYC Compliant', 'AML Monitored', 'PEP Screened', 'Multiple Currencies', 'Stablecoin Settlement', 'Tokenised Assets', 'Real Time Risk Scoring', 'Dynamic Settlement'];
+const tickerItems = ['KYB Verified', 'KYC Compliant', 'AML Monitored', 'PEP Screened', 'Sanctions Screened', 'Multiple Currencies', 'Open Banking', 'Stablecoin Settlement', 'Real Time Risk Scoring', 'Continuous Transaction Monitoring'];
+
+const verticals = [
+  { tag: 'Digital Content',    title: 'Content & Subscription Platforms', body: 'Digital content businesses and subscription platforms with recurring billing models, global audiences, and multi-currency exposure.',                            color: '59, 130, 246' },
+  { tag: 'Creator Economy',    title: 'Creator Economy Businesses',       body: 'Independent creators, digital publishers, and educators monetising through memberships, one-time purchases, and digital products.',                              color: '20, 184, 166' },
+  { tag: 'Commerce',           title: 'Online Marketplaces & E-commerce', body: 'Marketplaces and e-commerce merchants managing multi-party settlement, cross-border volume, and complex refund cycles.',                                        color: '99, 102, 241' },
+  { tag: 'Health & Wellness',  title: 'Health & Wellness Merchants',      body: 'Compliant health and wellness brands with high repeat purchase volumes, global distribution, and evolving regulatory obligations.',                             color: '52, 211, 153' },
+  { tag: 'Professional',       title: 'Professional Service Providers',   body: 'Service businesses requiring reliable recurring billing, structured settlement, and a payment partner that understands their operating model.',                 color: '168, 85, 247' },
+  { tag: 'Regulated',          title: 'Regulated Merchants',              body: 'Regulated businesses that meet our compliance and due diligence requirements and need a technology first partner capable of serving them properly.',             color: '6, 182, 212' },
+];
 
 export function HomePage() {
   const [painIdx, setPainIdx] = useState(0);
@@ -72,7 +81,7 @@ export function HomePage() {
 
   useEffect(() => {
     if (vertPaused) return;
-    const t = setInterval(() => setVertIdx(i => (i + 1) % 11), 7000);
+    const t = setInterval(() => setVertIdx(i => (i + 1) % verticals.length), 7000);
     return () => clearInterval(t);
   }, [vertIdx, vertPaused]);
 
@@ -116,15 +125,15 @@ export function HomePage() {
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.08}>
                 <h1 className="mtrx-h1 mtrx-home-hero-h1 page-hero-h1">
-                  Accept Payments.<br />
-                  Eliminate Chargebacks.<br />
-                  <em>Approved Where Others Declined.</em>
+                  Compliant payment<br />
+                  infrastructure for<br />
+                  <em>underserved digital businesses.</em>
                 </h1>
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.16}>
                 <p className="mtrx-hero-sub">
-                  MTRX Pay is a compliant payment orchestration platform designed for merchants who need higher approval rates, structured onboarding, and controlled settlement.<br /><br />
-                  Built with integrated KYC, AML monitoring, and intelligent risk controls from day one.
+                  MTRX Pay is a compliance and risk engine wrapped around a payment platform. Automated onboarding, identity verification, transaction monitoring, and multi rail settlement in a single integration.<br /><br />
+                  Risk assessed on conduct, not category. Compliance is the condition of service, not an afterthought.
                 </p>
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.24}>
@@ -250,7 +259,7 @@ export function HomePage() {
             <div className="mtrx-sec-head">
               <span className="mtrx-sec-label">The Problem</span>
               <h2 className="mtrx-h2">The problems we were<br /><em>built to solve.</em></h2>
-              <p className="mtrx-sec-sub">Legacy payment infrastructure wasn't designed for every merchant. If you've been declined, terminated, or left without recourse, you already know the gap. MTRX closes it.</p>
+              <p className="mtrx-sec-sub">The gap is not a lack of demand or legitimacy. It is a lack of infrastructure capable of serving these businesses compliantly and at scale. That is the gap MTRX closes.</p>
             </div>
           </AnimatedSection>
         </div>
@@ -317,27 +326,14 @@ export function HomePage() {
 
       {/* ══════════════════════ WHO WE SERVE ══════════════════════ */}
       {(() => {
-        const verticals = [
-          { tag: 'Digital Finance',    title: 'Digital Asset Platforms',      body: 'Crypto exchanges, Web3 applications, NFT marketplaces, and DeFi services operating at the intersection of technology and finance.',          color: '59, 130, 246' },
-          { tag: 'Financial Markets',  title: 'FX & Trading Platforms',       body: 'Forex brokers, prop trading firms, and investment platforms requiring high-volume, cross-border payment infrastructure.',                       color: '16, 185, 129' },
-          { tag: 'Wellness',           title: 'Botanical & Wellness Brands',  body: 'Plant-based wellness, hemp, and functional health brands navigating a complex but rapidly legitimising regulatory landscape.',                  color: '52, 211, 153' },
-          { tag: 'Health Sciences',    title: 'Nutritional Sciences',         body: 'Supplement, nutraceutical, and functional health brands with high repeat purchase volumes and global distribution.',                            color: '168, 85, 247' },
-          { tag: 'Entertainment',      title: 'Gaming & Entertainment',       body: 'Online gaming operators, skill-based entertainment platforms, and interactive media businesses with international player bases.',                color: '239, 68, 68' },
-          { tag: 'Content',            title: 'Premium Content Platforms',    body: 'Subscription content platforms and creator-led businesses with recurring billing models and global audiences.',                                 color: '244, 114, 182' },
-          { tag: 'Travel',             title: 'Travel & Hospitality',         body: 'OTAs, tour operators, and travel services with high average order values, complex refund cycles, and multi-currency exposure.',                 color: '6, 182, 212' },
-          { tag: 'Commerce',           title: 'Subscription Commerce',        body: 'SaaS, membership, and subscription businesses requiring reliable recurring billing across multiple currencies and jurisdictions.',               color: '99, 102, 241' },
-          { tag: 'Lifestyle',          title: 'Companion & Social Platforms', body: 'Relationship-economy platforms and social connection services operating in the personal companionship and lifestyle space.',                    color: '251, 146, 60' },
-          { tag: 'Education',          title: 'Course Sellers & EdTech',      body: 'Online educators, digital course creators, and learning platforms monetising through one-time purchases, cohorts, or subscriptions.',          color: '234, 179, 8' },
-          { tag: 'Creator Economy',    title: 'Independent Content Creators', body: 'Influencers, digital publishers, and independent creators monetising through memberships, tips, and exclusive digital products.',               color: '20, 184, 166' },
-        ];
         return (
           <section className="mtrx-verticals-section">
             <div className="container">
               <AnimatedSection animation="fade-up">
                 <div className="mtrx-sec-head">
                   <span className="mtrx-sec-label">Who We Serve</span>
-                  <h2 className="mtrx-h2">Built for the verticals traditional<br /><em>banking ignores.</em></h2>
-                  <p className="mtrx-sec-sub">MTRX specialises in sectors where conventional processors decline, restrict, or exit without notice. We call them specialist verticals, and we've built our entire infrastructure around them.</p>
+                  <h2 className="mtrx-h2">Built for legitimate businesses<br /><em>the old models overlook.</em></h2>
+                  <p className="mtrx-sec-sub">We serve lawful businesses that are underserved by conventional acquirers because of categorical rather than conduct based risk classification. Every merchant undergoes a comprehensive onboarding and compliance assessment before a single transaction is processed.</p>
                 </div>
               </AnimatedSection>
 
@@ -359,7 +355,7 @@ export function HomePage() {
                 </div>
 
                 <div className="mtrx-vert-controls">
-                  <button className="mtrx-carousel-arrow" onClick={() => setVertIdx(i => (i - 1 + 11) % 11)} aria-label="Previous">
+                  <button className="mtrx-carousel-arrow" onClick={() => setVertIdx(i => (i - 1 + verticals.length) % verticals.length)} aria-label="Previous">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
                   </button>
                   <div className="mtrx-carousel-dots">
@@ -367,7 +363,7 @@ export function HomePage() {
                       <button key={i} className={`mtrx-carousel-dot${i === vertIdx ? ' active' : ''}`} onClick={() => setVertIdx(i)} aria-label={`Go to slide ${i + 1}`} />
                     ))}
                   </div>
-                  <button className="mtrx-carousel-arrow" onClick={() => setVertIdx(i => (i + 1) % 11)} aria-label="Next">
+                  <button className="mtrx-carousel-arrow" onClick={() => setVertIdx(i => (i + 1) % verticals.length)} aria-label="Next">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
                   </button>
                 </div>
@@ -414,7 +410,7 @@ export function HomePage() {
                 Built for merchants ready<br /><em>to scale properly.</em>
               </h2>
               <p className="mtrx-home-cta-sub">
-                Join the first cohort of merchants and partners building on MTRX. Founding access is strictly limited, secure your place before standard terms apply.
+                Join the first cohort of merchants and partners building on MTRX. Founding access is strictly limited, and every application is subject to full compliance and due diligence review.
               </p>
               <div className="mtrx-home-cta-actions">
                 <a href="/join" className="mtrx-btn-gold">Apply for Founding Access</a>
