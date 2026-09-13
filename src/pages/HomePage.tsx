@@ -10,60 +10,89 @@ const CheckIcon = () => (
 
 const painPoints = [
   {
-    problem: 'Risk assessed by category, not conduct',
-    pBody: 'Conventional providers score risk by sector. Once a category is labelled difficult, lawful and well run businesses within it are refused, offboarded, or quoted unworkable terms, regardless of their own record.',
-    solution: 'Underwriting on verified conduct.',
-    sBody: 'Every application is assessed on verified identity, compliance posture, and real processing data. Merchants are judged on their own record, never on assumptions about their sector.',
+    problem: 'One provider cannot cover every market',
+    pBody: 'An acquirer performs well in the markets it knows and poorly outside them. Every new country means another integration, another contract, and another set of settlement terms to reconcile.',
+    solution: 'One integration, many providers.',
+    sBody: 'MTRX sits above the providers rather than beside them. Adding a market, a method, or a processor becomes a configuration change rather than an engineering project.',
   },
   {
-    problem: 'Commerce pushed beyond regulated oversight',
-    pBody: 'Excluded businesses do not stop trading. They migrate to cash, informal arrangements, and offshore providers, taking transparency, consumer protection, and tax visibility with them.',
-    solution: 'Lawful commerce kept inside the system.',
-    sBody: 'Monitored, reported, and fully auditable payment flows bring underserved businesses into regulated view rather than pushing them outside it.',
+    problem: 'Payments that fail for crossing a border',
+    pBody: 'A card issued in one country and presented to an acquirer in another is more likely to be declined, whatever the customer or the purchase. Revenue is lost to geography rather than to risk.',
+    solution: 'Routing that follows the customer.',
+    sBody: 'Each payment is sent to the provider with the strongest record for that country, currency, and method, then retried through an alternative when an attempt fails.',
   },
   {
-    problem: 'Compliance that stalls onboarding',
-    pBody: 'Manual KYB and KYC processes, weeks of correspondence, and ongoing AML obligations that consume resources without measurably reducing risk.',
+    problem: 'Cards are not how the world pays',
+    pBody: 'A great deal of the world’s online spending never touches a card. A checkout offering cards alone quietly excludes a large share of buyers in many markets.',
+    solution: 'Local methods, one checkout.',
+    sBody: 'Bank transfer, open banking, wallets, and regional methods are offered according to where the customer is, without a separate integration behind each one.',
+  },
+  {
+    problem: 'Settlement that waits for banking hours',
+    pBody: 'Cross border transfers move through correspondent banks, cut off times, and weekends. Working capital sits in transit for days while the business carries the gap.',
+    solution: 'Rails that do not close.',
+    sBody: 'Bank rails, open banking, and stablecoin settlement operate together as complementary primary rails. When conventional rails are closed, value still moves.',
+  },
+  {
+    problem: 'Currency treated as an afterthought',
+    pBody: 'Conversion applied at opaque rates, on somebody else’s schedule, turns a margin that should be predictable into one the business discovers after the fact.',
+    solution: 'Multi currency by design.',
+    sBody: 'Charge in the customer’s currency and settle in your own. The rate and the cost of conversion are shown against each transaction rather than buried in a monthly statement.',
+  },
+  {
+    problem: 'Compliance repeated market by market',
+    pBody: 'Each jurisdiction brings its own verification, screening, and reporting obligations, usually met by repeating manual work the previous market already required.',
     solution: 'Embedded compliance, automated end to end.',
-    sBody: 'Business verification, identity checks, sanctions and PEP screening, and continuous AML monitoring run inside the core payment flow rather than bolted on beside it.',
-  },
-  {
-    problem: 'Dependence on a single rail',
-    pBody: 'When acceptance rests on one processor or one settlement rail, a single policy change or outage can halt a business entirely.',
-    solution: 'Multi rail settlement by design.',
-    sBody: 'Bank rails, open banking, and digital asset settlement operate as complementary primary rails. Routing adapts automatically to protect acceptance and resilience.',
-  },
-  {
-    problem: 'Reserves set by sector assumption',
-    pBody: 'Working capital withheld for months on the basis of what a business is, rather than what its actual settlement and dispute data shows.',
-    solution: 'Performance based reserve logic.',
-    sBody: 'Reserves are calculated dynamically against real chargeback and settlement performance, not sector wide averages.',
-  },
-  {
-    problem: 'Disputes left undefended',
-    pBody: 'Evidence gathering, deadline tracking, and filing are routinely left entirely to the merchant, with no structured support.',
-    solution: 'Managed dispute resolution.',
-    sBody: 'Evidence is packaged from live transaction data and filed before every deadline. Where automation reaches its limits, our disputes team reviews the case and represents the merchant position directly.',
+    sBody: 'Business verification, identity checks, sanctions and PEP screening, and continuous AML monitoring run inside the payment flow and extend to each new market as it is added.',
   },
 ];
 
+/*
+  Illustrative, and every route crosses a border: collected in one currency,
+  settled in another. That is the difference the platform exists to make, so
+  the example transactions should show it rather than a currency returning to
+  itself.
+*/
 const txnFeed = [
-  { from: 'GBP', crypto: 'USDC', to: 'GBP', amount: '£12,400.00', risk: 94, label: 'AML Clear',     status: 'Settled',  time: '2s' },
-  { from: 'USD', crypto: 'ETH',  to: 'USD', amount: '$8,200.00',  risk: 87, label: 'KYC Verified', status: 'Approved', time: '5s' },
-  { from: 'EUR', crypto: 'USDT', to: 'EUR', amount: '€45,000.00', risk: 91, label: 'PEP None',      status: 'Settled',  time: '9s' },
-  { from: 'GBP', crypto: 'BTC',  to: 'GBP', amount: '£2,100.00',  risk: 79, label: 'KYB OK',        status: 'Approved', time: '14s' },
-  { from: 'BTC', crypto: 'BTC',  to: 'GBP', amount: '£31,750.00', risk: 88, label: 'AML Clear',     status: 'Settled',  time: '21s' },
+  { from: 'GBP', crypto: 'USDC', to: 'EUR', amount: '£12,400.00',   risk: 94, label: 'AML Clear',     status: 'Settled',  time: '2s' },
+  { from: 'USD', crypto: 'USDC', to: 'MXN', amount: '$8,200.00',    risk: 87, label: 'KYC Verified',  status: 'Approved', time: '5s' },
+  { from: 'EUR', crypto: 'USDT', to: 'GBP', amount: '€45,000.00',   risk: 91, label: 'PEP None',      status: 'Settled',  time: '9s' },
+  { from: 'AED', crypto: 'USDC', to: 'USD', amount: 'AED 77,000.00', risk: 79, label: 'KYB OK',       status: 'Approved', time: '14s' },
+  { from: 'SGD', crypto: 'USDC', to: 'GBP', amount: 'S$52,900.00',  risk: 88, label: 'AML Clear',     status: 'Settled',  time: '21s' },
 ];
 
-const tickerItems = ['KYB Verified', 'KYC Compliant', 'AML Monitored', 'PEP Screened', 'Sanctions Screened', 'Multiple Currencies', 'Open Banking', 'Stablecoin Settlement', 'Real Time Risk Scoring', 'Continuous Transaction Monitoring'];
+/*
+  What the platform does, with the cross-border half of it first.
 
+  The list was almost entirely compliance, which describes a business
+  defending itself rather than one selling. Compliance stays, because it is
+  real and it matters to the people signing contracts, but it is no longer the
+  whole answer to what MTRX is.
+*/
+const tickerItems = ['Multi-Provider Routing', 'Automatic Failover', '100+ Currencies', 'Local Payment Methods', 'Stablecoin Settlement', 'Cross-Border by Default', 'One Reconciliation', 'KYB Verified', 'KYC Compliant', 'AML Monitored', 'PEP Screened'];
+
+/*
+  Who this is for, described by the situation rather than the sector.
+
+  This was six industry cards. Naming sectors re-anchors the company as a
+  high-risk processor the moment a bank, a partner or a provider reads the
+  homepage, which is the thing the repositioning exists to stop. It also
+  narrows the market: a SaaS business selling into thirty countries is exactly
+  as good a customer as any vertical previously named here, and a list of
+  categories tells them this is not for them.
+
+  A business recognises its own situation faster than it recognises its
+  category. Everybody previously listed still sees themselves here.
+
+  The sector taxonomy is not lost. It still exists in onboarding, where it does
+  real work routing an application, which is the place it belongs: an
+  operational detail rather than the shop window.
+*/
 const verticals = [
-  { tag: 'Digital Content',    title: 'Content & Subscription Platforms', body: 'Digital content businesses and subscription platforms with recurring billing models, global audiences, and multi-currency exposure.',                            color: '59, 130, 246' },
-  { tag: 'Creator Economy',    title: 'Creator Economy Businesses',       body: 'Independent creators, digital publishers, and educators monetising through memberships, one-time purchases, and digital products.',                              color: '20, 184, 166' },
-  { tag: 'Commerce',           title: 'Online Marketplaces & E-commerce', body: 'Marketplaces and e-commerce merchants managing multi-party settlement, cross-border volume, and complex refund cycles.',                                        color: '99, 102, 241' },
-  { tag: 'Health & Wellness',  title: 'Health & Wellness Merchants',      body: 'Compliant health and wellness brands with high repeat purchase volumes, global distribution, and evolving regulatory obligations.',                             color: '52, 211, 153' },
-  { tag: 'Professional',       title: 'Professional Service Providers',   body: 'Service businesses requiring reliable recurring billing, structured settlement, and a payment partner that understands their operating model.',                 color: '168, 85, 247' },
-  { tag: 'Regulated',          title: 'Regulated Merchants',              body: 'Regulated businesses that meet our compliance and due diligence requirements and need a technology first partner capable of serving them properly.',             color: '6, 182, 212' },
+  { tag: 'Multi Market',     title: 'You sell in more than one country',             body: 'Customers in different markets reach the same checkout, priced in the currency they think in and offered the methods they already use. No separate integration per market.',        color: '59, 130, 246' },
+  { tag: 'Routing',          title: 'One provider is not enough',                    body: 'Approval rates differ by country, by issuer and by hour. When a route declines, the next one takes the payment rather than the sale ending there.',                                color: '20, 184, 166' },
+  { tag: 'Settlement',       title: 'Waiting days for money is not workable',        body: 'Settlement runs on stablecoin rails, which have no cut-off time, no weekend and no bank holiday. Money crosses a border without waiting for two banks to open.',                   color: '99, 102, 241' },
+  { tag: 'Reconciliation',   title: 'Reconciliation should not scale with providers', body: 'However many routes a payment could have taken, it arrives as one record, in one ledger, with the fee and the net already worked out.',                                           color: '52, 211, 153' },
 ];
 
 export function HomePage() {
@@ -125,15 +154,15 @@ export function HomePage() {
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.08}>
                 <h1 className="mtrx-h1 mtrx-home-hero-h1 page-hero-h1">
-                  Compliant payment<br />
-                  infrastructure for<br />
-                  <em>underserved digital businesses.</em>
+                  Take Payments Anywhere.<br />
+                  Settle Everywhere.<br />
+                  <em>One Integration, Every Route.</em>
                 </h1>
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.16}>
                 <p className="mtrx-hero-sub">
-                  MTRX Pay is a compliance and risk engine wrapped around a payment platform. Automated onboarding, identity verification, transaction monitoring, and multi rail settlement in a single integration.<br /><br />
-                  Risk assessed on conduct, not category. Compliance is the condition of service, not an afterthought.
+                  MTRX Pay is payment orchestration for businesses that sell across borders. One integration reaches many providers, and every payment is routed to the one most likely to complete it, in the currency your customer already thinks in.<br /><br />
+                  When a route fails, the next one takes it. Settlement runs on stablecoin rails, so money crosses a border at the speed of the internet rather than the speed of correspondent banking.
                 </p>
               </AnimatedSection>
               <AnimatedSection animation="fade-up" delay={0.24}>
@@ -196,39 +225,51 @@ export function HomePage() {
       {/* ══════════════════════ METRICS ══════════════════════ */}
       <div className="mtrx-metrics-strip">
         <div className="container">
+          {/*
+            Figures that can be stood behind.
+
+            "99.98% payment success rate" and "99.99% uptime SLA" were both
+            here and neither is measured: there is no SLA anybody has signed
+            and no success rate over enough payments to quote two decimal
+            places of. A number on a payments homepage is the one a prospect
+            repeats back in a meeting, so each of these is now either counted
+            or a capability rather than a performance claim.
+          */}
           <p className="mtrx-metrics-disclaimer">
-            Target platform metrics, pre-launch
+            Platform capability, not performance to date
           </p>
           <div className="mtrx-metrics-row">
+            {/* Measured against the live provider catalogue on 2026-09-13:
+                113 fiat currencies and 22 providers considered on a single
+                quote. Both quoted low. */}
             <AnimatedSection animation="fade-up" delay={0} className="mtrx-metric">
               <span className="mtrx-metric-num">
-                <AnimatedCounter value={99.99} suffix="%" duration={1800} />
+                <AnimatedCounter value={100} suffix="+" duration={1800} />
               </span>
-              <span className="mtrx-metric-lbl">Uptime SLA</span>
+              <span className="mtrx-metric-lbl">Currencies Accepted</span>
             </AnimatedSection>
             <div className="mtrx-metric-divider" />
             <AnimatedSection animation="fade-up" delay={0.08} className="mtrx-metric">
               <span className="mtrx-metric-num">
-                <AnimatedCounter value={50} suffix="+" duration={1400} />
+                <AnimatedCounter value={20} suffix="+" duration={1400} />
               </span>
-              <span className="mtrx-metric-lbl">Supported Assets</span>
+              <span className="mtrx-metric-lbl">Providers Routed</span>
             </AnimatedSection>
             <div className="mtrx-metric-divider" />
+            {/* Not a boast about our uptime, a fact about the rails:
+                stablecoin settlement has no cut-off, weekend or bank
+                holiday. */}
             <AnimatedSection animation="fade-up" delay={0.16} className="mtrx-metric">
-              <span className="mtrx-metric-num"><AnimatedCounter value={99.98} suffix="%" duration={1800} /></span>
-              <span className="mtrx-metric-lbl">Payment Success Rate</span>
+              <span className="mtrx-metric-num"><AnimatedCounter value={24} suffix="/7" duration={1600} /></span>
+              <span className="mtrx-metric-lbl">Settlement Window</span>
             </AnimatedSection>
             <div className="mtrx-metric-divider" />
+            {/* Structural rather than aspirational. A merchant is paid from a
+                wallet balance, and there is no card in that transaction to
+                reverse. */}
             <AnimatedSection animation="fade-up" delay={0.24} className="mtrx-metric">
-              <span className="mtrx-metric-num">
-                <AnimatedCounter value={140} suffix="+" duration={1600} />
-              </span>
-              <span className="mtrx-metric-lbl">Countries</span>
-            </AnimatedSection>
-            <div className="mtrx-metric-divider" />
-            <AnimatedSection animation="fade-up" delay={0.32} className="mtrx-metric">
               <span className="mtrx-metric-num">0%</span>
-              <span className="mtrx-metric-lbl">Chargeback Target</span>
+              <span className="mtrx-metric-lbl">Merchant Chargebacks</span>
             </AnimatedSection>
           </div>
         </div>
@@ -259,7 +300,7 @@ export function HomePage() {
             <div className="mtrx-sec-head">
               <span className="mtrx-sec-label">The Problem</span>
               <h2 className="mtrx-h2">The problems we were<br /><em>built to solve.</em></h2>
-              <p className="mtrx-sec-sub">The gap is not a lack of demand or legitimacy. It is a lack of infrastructure capable of serving these businesses compliantly and at scale. That is the gap MTRX closes.</p>
+              <p className="mtrx-sec-sub">Selling into more markets multiplies the providers, methods, currencies, and rules a business has to hold together. Orchestration is what keeps that manageable as the number of markets grows.</p>
             </div>
           </AnimatedSection>
         </div>
@@ -332,8 +373,8 @@ export function HomePage() {
               <AnimatedSection animation="fade-up">
                 <div className="mtrx-sec-head">
                   <span className="mtrx-sec-label">Who We Serve</span>
-                  <h2 className="mtrx-h2">Built for legitimate businesses<br /><em>the old models overlook.</em></h2>
-                  <p className="mtrx-sec-sub">We serve lawful businesses that are underserved by conventional acquirers because of categorical rather than conduct based risk classification. Every merchant undergoes a comprehensive onboarding and compliance assessment before a single transaction is processed.</p>
+                  <h2 className="mtrx-h2">Businesses selling to<br /><em>customers everywhere.</em></h2>
+                  <p className="mtrx-sec-sub">Not an industry, a situation. If any of these is true of you, orchestration is the difference between entering a market and integrating with one. Every merchant completes a full onboarding and compliance assessment before a single transaction is processed.</p>
                 </div>
               </AnimatedSection>
 
@@ -384,10 +425,10 @@ export function HomePage() {
               <div className="mtrx-pricing-txn">+ 7% per transaction</div>
               <ul className="mtrx-pricing-features">
                 <li><CheckIcon /> £149 one-time setup fee</li>
-                <li><CheckIcon /> 50+ payment methods</li>
-                <li><CheckIcon /> Dedicated account manager</li>
+                <li><CheckIcon /> 50+ payment methods worldwide</li>
+                <li><CheckIcon /> Multi-currency settlement</li>
                 <li><CheckIcon /> Managed dispute resolution</li>
-                <li><CheckIcon /> Integrated KYC/KYB/AML</li>
+                <li><CheckIcon /> Integrated KYC / KYB / AML</li>
                 <li><CheckIcon /> Founding rates locked permanently</li>
               </ul>
               <div className="mtrx-pricing-cta">
@@ -407,7 +448,7 @@ export function HomePage() {
             <div className="mtrx-home-cta-inner">
               <span className="mtrx-sec-label">Founding Partner Programme</span>
               <h2 className="mtrx-home-cta-h2">
-                Built for merchants ready<br /><em>to scale properly.</em>
+                Built for merchants ready<br /><em>to sell everywhere.</em>
               </h2>
               <p className="mtrx-home-cta-sub">
                 Join the first cohort of merchants and partners building on MTRX. Founding access is strictly limited, and every application is subject to full compliance and due diligence review.
