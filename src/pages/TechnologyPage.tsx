@@ -58,7 +58,10 @@ const stack = [
   { label: 'Uptime SLA',          val: '99.9%' },
   { label: 'Scoring Latency',     val: '<100ms' },
   { label: 'Payment Methods',     val: '50+' },
-  { label: 'Supported Currencies', val: '30+' },
+  // 113 fiat currencies in the live provider catalogue on 2026-09-13, quoted
+  // low. This said 30+ while the homepage and About both said 100+, which is
+  // the sort of thing a prospect notices and a partner asks about.
+  { label: 'Supported Currencies', val: '100+' },
   { label: 'API Endpoints',       val: 'REST' },
   { label: 'Settlement Formats',  val: 'Fiat + Crypto' },
 ];

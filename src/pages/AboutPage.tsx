@@ -18,14 +18,15 @@ export function AboutPage() {
           </AnimatedSection>
           <AnimatedSection animation="fade-up" delay={0.15}>
             <h1 className="mtrx-h1 mab-hero-h1 page-hero-h1">
-              Bringing lawful commerce<br />
-              <em>back into regulated view.</em>
+              Built for commerce that<br />
+              <em>does not stop at a border.</em>
             </h1>
           </AnimatedSection>
           <AnimatedSection animation="fade-up" delay={0.28}>
             <p className="mab-hero-sub">
-              Institutional grade compliance. Conduct based underwriting. Payment
-              infrastructure that makes underserved businesses safe to serve.
+              One integration, many providers, and settlement that does not wait
+              for two banks to open. Institutional grade compliance underneath
+              all of it.
             </p>
           </AnimatedSection>
         </div>
@@ -52,11 +53,23 @@ export function AboutPage() {
       <section className="mab-stats">
         <div className="container">
           <div className="mab-stats-grid">
+            {/*
+              The same four figures the homepage strip carries, and for the
+              same reason.
+
+              "99.99% platform uptime, guaranteed SLA across all merchant
+              rails" was here. There is no SLA anybody has signed, and the
+              homepage stopped making that claim, so a prospect who read both
+              pages would have caught the site contradicting itself.
+
+              "10+ payment methods" was the other problem: the pricing card
+              says 50+. Two numbers for one fact, on the same site.
+            */}
             {[
-              { value: 10,  suffix: '+',   label: 'Payment Methods',           sub: 'Cards, open banking, digital assets, SWIFT & SEPA' },
-              { value: 99,  suffix: '.99%', label: 'Platform Uptime',          sub: 'Guaranteed SLA across all merchant rails' },
+              { value: 100, suffix: '+',   label: 'Currencies Accepted',      sub: 'Priced in the currency your customer already thinks in' },
+              { value: 20,  suffix: '+',   label: 'Providers Routed',         sub: 'One integration reaches every one of them' },
+              { value: 24,  suffix: '/7',  label: 'Settlement Window',        sub: 'Stablecoin rails have no weekend and no bank holiday' },
               { value: 90,  suffix: 'd',   label: 'Founding Partner Window',  sub: 'Zero subscription fees for early members' },
-              { value: 24,  suffix: '/7',  label: 'Dedicated Support',        sub: 'Human first, not helpdesk tickets' },
             ].map((stat, i) => (
               <AnimatedSection key={i} animation="fade-up" delay={i * 0.09}>
                 <div className="mab-stat">
@@ -87,7 +100,7 @@ export function AboutPage() {
             {[
               { num: '01', title: 'Compliance First',      body: 'Regulatory alignment is the foundation of every merchant relationship. Compliance is the condition of service, never an afterthought or a box to be ticked later.' },
               { num: '02', title: 'Security by Design',    body: 'Protection is engineered into the platform from the ground up, not added once a problem appears. Every rail, wallet, and settlement path is built to be monitored.' },
-              { num: '03', title: 'Technology Led',        body: 'Modern infrastructure and intelligent risk assessment solve the problems incumbents chose to avoid rather than solve. We improve continuously against real merchant data.' },
+              { num: '03', title: 'Technology Led',        body: 'Modern infrastructure and intelligent routing solve problems the incumbent model left the merchant to absorb. We improve continuously against real merchant data.' },
               { num: '04', title: 'Transparency & Trust',  body: 'Clear terms, clear reporting, honest partnership. No hidden fees, no black-box decisions, and no merchant left guessing where they stand.' },
             ].map((v, i) => (
               <AnimatedSection key={i} animation="fade-up" delay={i * 0.07}>
@@ -116,7 +129,7 @@ export function AboutPage() {
             {[
               { num: '01', title: 'Regulatory Compliance', body: "We don't just meet regulatory requirements, we exceed them. Our compliance framework is designed to give regulators confidence and merchants absolute peace of mind." },
               { num: '02', title: 'Modern Technology',     body: 'API first infrastructure engineered for reliability, security, and rapid iteration. Your integration is built to last, not to be renegotiated every 18 months.' },
-              { num: '03', title: 'Partnership Model',     body: 'We work alongside acquiring banks, card schemes, and technology partners who share our view that financial inclusion and rigorous oversight strengthen each other rather than compete.' },
+              { num: '03', title: 'Partnership Model',     body: 'We work alongside acquiring banks, card schemes, local providers, and technology partners in every market we route into. To a merchant, more partners is not more complexity. It is another route when the first one declines.' },
             ].map((p, i) => (
               <AnimatedSection key={i} animation="fade-up" delay={i * 0.08}>
                 <div className="mab-pillar">
@@ -152,16 +165,16 @@ export function AboutPage() {
             <AnimatedSection animation="fade-up" delay={0.12}>
               <div className="mab-founder-letter">
                 <span className="mab-founder-quote-mark" aria-hidden="true">"</span>
-                <p>Over the years, I've built businesses in sectors that traditional banks and payment processors struggle to understand.</p>
+                <p>Over the years, I've built businesses selling into markets that traditional banks and payment processors struggle to reach.</p>
                 <p className="mab-founder-pull">I've seen accounts restricted without warning. Funds held during critical growth phases.</p>
                 <p>It forces you to realise something quickly:</p>
                 <p className="mab-founder-emphasis">If you don't control your infrastructure,<br />you don't control your future.</p>
-                <p>When I began working in emerging digital markets, it became clear that the payment layer was the weakest point. The sectors moving fastest were being supported by rails built for yesterday's economy.</p>
+                <p>The further we sold from home, the clearer it became that the payment layer was the weakest point. Businesses moving fastest were being carried by rails built for yesterday's economy, rails that still assume money stays in one country.</p>
                 <p>So instead of looking for another workaround, I decided to build properly.</p>
                 <p>I partnered with Keiran, a technical product specialist, and we began architecting our own backend from the ground up. Not a reseller model. Not a fragile overlay. But real infrastructure, designed with intelligent onboarding, structured risk controls, dynamic settlement logic, and long-term scalability built in from day one.</p>
                 <p>Wayne believed in that vision early. His support and belief in the scale of what we were building helped shape MTRX's foundation.</p>
                 <p className="mab-founder-pull">MTRX isn't a reaction. It's a deliberate move toward independence.</p>
-                <p>Emerging markets aren't going away. They're expanding. And they require infrastructure that understands their velocity, complexity, and regulatory pressure, without collapsing under it.</p>
+                <p>Cross border commerce isn't going away. It's expanding. And it requires infrastructure that understands its velocity, complexity, and regulatory pressure, without collapsing under it.</p>
                 <p>We're building MTRX because the next generation of commerce deserves stronger rails.</p>
                 <div className="mab-founder-closing">
                   <span>Built by operators.</span>
@@ -190,7 +203,7 @@ export function AboutPage() {
             <AnimatedSection animation="fade-up" delay={0.12}>
               <div className="mab-founder-letter">
                 <span className="mab-founder-quote-mark" aria-hidden="true">"</span>
-                <p>I joined MTRX Pay because I saw the struggle up close. Peter's frustration with how entire categories of lawful business were sidelined, judged on what they were rather than how they behaved, sparked a fire in me. With a deep background in technology, I've spent years building solutions that bridge complexity and customer needs. This wasn't just another project, it was a mission.</p>
+                <p>I joined MTRX Pay because I saw the problem up close. Peter's frustration with how hard it still is to take a payment across a border sparked a fire in me. With a deep background in technology, I've spent years building solutions that bridge complexity and customer needs. This wasn't just another project, it was a mission.</p>
                 <p className="mab-founder-pull">I've always believed that technology is at its best when it's invisible, working seamlessly behind the scenes so customers can thrive.</p>
                 <p>That's exactly how we've shaped MTRX Pay. Every piece of the platform is engineered with both precision and empathy. We're here because technology, when done right, ensures no compliant merchant is left without a path to success. My journey from building products to now building compliance and risk infrastructure is about making sure every merchant gets the tools they deserve.</p>
                 <p>Operationally, we stand alongside our merchants every step of the way. That means real people, real support, and 24/7 availability when it matters most. Payments don't sleep, and neither does responsibility, so our commitment goes beyond the platform itself.</p>
