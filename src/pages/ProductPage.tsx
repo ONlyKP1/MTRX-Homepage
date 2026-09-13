@@ -211,7 +211,7 @@ export function ProductPage() {
                   >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
-                  Multi-currency processing across 30+ currencies
+                  Multi-currency processing across 100+ currencies
                 </li>
                 <li>
                   <svg

@@ -2,7 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!--
+      This pointed at /favicon.svg, which has never existed in this repo. The
+      SPA catch-all answers any unknown path with index.html, so the request
+      returned HTML with a 200 rather than a 404, the browser discarded it, and
+      the site showed the blank default icon with nothing in the console to say
+      why.
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="MTRX Pay is payment orchestration for businesses selling across borders. One integration reaches many providers, local payment methods and settlement rails, with every payment routed to the provider most likely to complete it in that market." />
     <title>MTRX Pay - Cross Border Payment Orchestration</title>

@@ -55,7 +55,11 @@ const rails = [
 ];
 
 const stack = [
-  { label: 'Uptime SLA',          val: '99.9%' },
+  // Was "Uptime SLA 99.9%", the last place on the site promising an SLA that
+  // nobody has signed. Replaced rather than deleted so the table keeps its six
+  // rows, and with a fact about the rails instead of a promise about us:
+  // stablecoin settlement has no cut-off, weekend or bank holiday.
+  { label: 'Settlement Window',   val: '24/7' },
   { label: 'Scoring Latency',     val: '<100ms' },
   { label: 'Payment Methods',     val: '50+' },
   // 113 fiat currencies in the live provider catalogue on 2026-09-13, quoted
