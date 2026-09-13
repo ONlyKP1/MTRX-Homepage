@@ -9,16 +9,22 @@ import { TechnologyPage } from './pages/TechnologyPage';
 export default function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/product" element={<ProductPage />} />
-          <Route path="/join" element={<JoinPage />} />
-          <Route path="/technology" element={<TechnologyPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        {/*
+          The homepage brings its own chrome.
+
+          PublicLayout carries the ported navigation and footer, so wrapping it
+          in Layout as well would render two navigation bars and two footers.
+          The other pages still use the original Layout, which is why the route
+          list looks uneven: they have not been ported yet.
+        */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<Layout><AboutPage /></Layout>} />
+        <Route path="/product" element={<Layout><ProductPage /></Layout>} />
+        <Route path="/join" element={<Layout><JoinPage /></Layout>} />
+        <Route path="/technology" element={<Layout><TechnologyPage /></Layout>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </BrowserRouter>
   );
 }
